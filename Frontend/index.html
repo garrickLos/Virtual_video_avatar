@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Virtual character</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div class="scene">
+        <section id="settings-wrap">
+            <label id="stream-toggle" class="stream-toggle">
+                <input type="checkbox" id="hideSettingsToggle">
+                <span class="stream-toggle-track"></span>
+            </label>
+
+            <div id="settings">
+                <button id="spinButton" class="spin-button" type="button">Click to talk</button>
+
+                <div class="input-container">
+                    <label for="character-scale-input">Input scale of the character</label>
+                    <input type="number" id="character-scale-input" class="scale-input" min="0.001" max="2.001"
+                        step="0.1" value="1" />
+                </div>
+
+                <div class="input-container">
+                    <label for="greenscreen-color-input">Greenscreen color</label>
+                    <input type="color" id="greenscreen-color-input" class="color-input" value="#00ff00" />
+                </div>
+
+                <div id="rotationMarker_wrapper" class="input-container">
+                    <label for="hideRotationMarker">Toggle the rotation marker</label>
+                    <input type="checkbox" id="hideRotationMarker">
+                </div>
+
+                <div class="input-container">
+                    <label for="head-picture-input">Head picture path</label>
+                    <input type="text" id="head-picture-input" class="text-input"
+                        placeholder="Plak pad (bijv: C:\images\sentra.png)" />
+                </div>
+
+                <div class="input-container">
+                    <label for="body-picture-input">Body picture path</label>
+                    <input type="text" id="body-picture-input" class="text-input"
+                        placeholder="Plak pad (bijv: C:\images\green.png)" />
+                </div>
+            </div>
+        </section>
+
+        <div class="character-stage">
+            <div id="entire_body">
+                <div id="rotating" class="head-stage character">
+                    <img id="character_head" class="character character-head"
+                        src="./character_art/Characters/dnd_vulivant_head.png" alt="Karakter">
+                    <div id="debug-stip"></div>
+                </div>
+
+                <img id="character_body" class="character character-body"
+                    src="./character_art/Characters/dnd_vulivant_body.png" alt="Lichaam">
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./javascript/script.js"></script>
+</body>
+
+</html>

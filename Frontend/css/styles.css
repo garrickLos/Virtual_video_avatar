@@ -1,0 +1,61 @@
+@import url("./character-style.css");
+@import url("./settings-style.css");
+
+:root {
+    --origin_x: 450px;
+    /* Verplaatst naar links en rechts (de nek)*/
+    --origin_y: 165px;
+    /* Verplaatst naar boven en beneden (de nek) */
+
+    --character_scale: 0.5;
+    --character_picture_scale: 1000px;
+    --greenscreen_color: #00ff00;
+}
+
+body {
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--greenscreen_color);
+    font-family: Arial, sans-serif;
+}
+
+.scene {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-areas: "settings-wrap . character-stage";
+}
+
+#debug-stip {
+    --visibility: hidden;
+
+    position: absolute;
+    left: var(--origin_x);
+    top: var(--origin_y);
+
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border: 5px solid white;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    pointer-events: none;
+
+    visibility: var(--visibility);
+}
+
+@media (max-width: 1000px) {
+    .scene {
+
+        display: grid;
+
+        grid-template-columns: 1fr 0fr 1fr;
+        grid-template-areas: "settings-wrap . character-stage";
+    }
+}
