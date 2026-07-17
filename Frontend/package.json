@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder --publish always"
   },
   "devDependencies": {
-    "electron": "^42.1.0"
+    "electron": "^42.1.0",
+    "electron-builder": "^25.1.8"
   },
   "description": "",
   "dependencies": {
@@ -30,6 +32,29 @@
     "undici-types": "^7.16.0",
     "wrappy": "^1.0.2",
     "yauzl": "^2.10.0"
+  },
+  "build": {
+    "appId": "com.jouwnaam.virtueelcharacter",
+    "productName": "Virtueel Character",
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,readme.md,readme}",
+      "!**/*.map"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "garrickLos",
+      "repo": "Virtual_video_avatar"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   },
   "keywords": [],
   "author": "",
