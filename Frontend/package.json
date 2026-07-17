@@ -1,6 +1,6 @@
 {
   "name": "Virtuel-character",
-  "version": "0.0.01",
+  "version": "0.0.2",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
