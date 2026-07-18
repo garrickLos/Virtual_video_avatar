@@ -2,19 +2,36 @@
 @import url("./settings-style.css");
 
 :root {
-    --origin_x: 450px;
+    --origin_x: 510px;
     /* Verplaatst naar links en rechts (de nek)*/
-    --origin_y: 165px;
+    --origin_y: 164px;
     /* Verplaatst naar boven en beneden (de nek) */
 
-    --character_scale: 0.5;
-    --character_picture_scale: 1000px;
+    --character_scale: 1;
+    --character_picture_scale: auto;
     --greenscreen_color: #00ff00;
 }
 
-body {
-    margin: 0;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
+/* =========================================
+   VIEWPORT / SCHAAL BASIS
+   Alles vult altijd exact het beschikbare venster
+   en scrollt nooit meer - het krimpt/groeit mee.
+   ========================================= */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,22 +40,27 @@ body {
 }
 
 .scene {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr 2fr;
-    grid-template-areas: "settings-wrap . character-stage";
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "settings-wrap character-stage";
+    overflow: hidden;
 }
 
 #debug-stip {
-    --visibility: hidden;
+    --visibility: visible;
 
     position: absolute;
     left: var(--origin_x);
     top: var(--origin_y);
 
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     background-color: red;
     border: 5px solid white;
     border-radius: 50%;

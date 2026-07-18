@@ -1,30 +1,43 @@
 /* =========================================
    STANDAARD (FULL SCREEN) - JOUW ORIGINELE CSS
    ========================================= */
-
 #settings-wrap {
     width: auto;
-
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
     grid-area: settings-wrap;
     display: grid;
     grid-template-rows: 1fr 2fr;
     grid-template-areas: "toggle_button" "talk_button";
+    overflow-y: auto;
+    /* vangnet: als er echt te weinig hoogte is, scrollt alleen dit paneeltje - de rest blijft altijd passen */
 }
 
 #settings {
-    
+    width: 75%;
+
+    max-height: 100%;
+
     box-sizing: border-box;
 
-    overflow: hidden;
-    transition: height 0.15s ease, padding 0.15s ease, margin 0.15s ease;
+    font-size: 1.3rem;
 
+    overflow-y: scroll;
+    
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, #2f6f4f 60%, transparent) transparent;
+
+    transition: height 0.15s ease, padding 0.15s ease, margin 0.15s ease;
     display: flex;
     flex-direction: column;
     gap: 1%;
-
     background-color: aliceblue;
-    border-radius: 50px;
-    padding: 5%;
+    /* border-radius: 50px 0 0 50px; */
+
+    padding: 5% 4% 5% 5%;
+
+    margin: 0 0 2% 2%;
 }
 
 #settings.hidden {
@@ -35,7 +48,6 @@
     margin-bottom: 0;
     overflow: hidden;
 }
-
 /* --- Chroma key toggle --- */
 .stream-toggle {
     grid-area: toggle_button;
@@ -46,7 +58,6 @@
     justify-self: center;
     cursor: pointer;
 }
-
 .stream-toggle input {
     position: absolute;
     opacity: 0;
@@ -56,111 +67,94 @@
     cursor: pointer;
     z-index: 2;
 }
-
 .stream-toggle-track {
     --button-color: var(--greenscreen_color);
     --button-border-color: color-mix(in srgb, var(--greenscreen_color) 75%, black 25%);
-
-    display: block;
+    
     width: 100%;
     height: 100%;
 
+    display: block;
     background-color: var(--button-color);
     border: 5px solid var(--button-color);
     border-color: var(--button-border-color);
     border-radius: 13px;
 }
-
 .spin-button {
-    grid-area: talk_button;
     width: 100%;
     height: 50px;
+
+    font-size: 1.3rem;
+    
+    grid-area: talk_button;
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 0.6rem;
     background: #2f6f4f;
     color: white;
-    font-size: 1.5rem;
     cursor: pointer;
     transition: transform 0.1s ease;
 }
-
 .spin-button:active {
     transform: scale(0.97);
 }
-
 /* --- Containers voor de inputs --- */
 .input-container {
-    font-size: 1.5rem;
     background-color: rgb(215, 215, 215);
     padding: 3%;
     border-radius: 15px;
-
     display: flex;
     flex-direction: column;
     gap: 10px;
     box-sizing: border-box;
     width: 100%;
 }
-
 /* --- Scale Input --- */
 .scale-input {
     width: 100%;
     min-height: 50px;
+
     box-sizing: border-box;
-
     padding: 0.8rem 1.2rem;
-    font-size: 1.5rem;
     color: white;
-
     background: color-mix(in srgb, #2f6f4f 70%, black 30%);
     border: 2px solid #2f6f4f;
     border-radius: 0.6rem;
-
     outline: none;
     transition: border-color 0.15s ease, background-color 0.15s ease;
 }
-
 .scale-input:focus {
     border-color: #00ff00;
     background: color-mix(in srgb, #2f6f4f 50%, black 50%);
 }
-
 .text-input {
     width: 100%;
     min-height: 50px;
     box-sizing: border-box;
-
     padding: 0.8rem 1.2rem;
-    font-size: 1.2rem;
     /* Iets kleiner voor lange paden */
     color: white;
-
     background: color-mix(in srgb, #2f6f4f 70%, black 30%);
     border: 2px solid #2f6f4f;
     border-radius: 0.6rem;
-
     outline: none;
     transition: border-color 0.15s ease, background-color 0.15s ease;
 }
-
 .text-input:focus {
     border-color: #00ff00;
     background: color-mix(in srgb, #2f6f4f 50%, black 50%);
 }
-
 /* --- Color Input --- */
 .color-input {
     width: 100%;
     min-height: 50px;
-    box-sizing: border-box;
 
+    box-sizing: border-box;
     padding: 0.5rem;
     background: color-mix(in srgb, #2f6f4f 70%, black 30%);
     border: 2px solid #2f6f4f;
     border-radius: 0.6rem;
     cursor: pointer;
-
     outline: none;
     transition: border-color 0.15s ease, background-color 0.15s ease;
 }
@@ -196,8 +190,6 @@
     height: 30px;
     cursor: pointer;
 }
-
-
 /* =========================================
    HALF SCHERM / KLEINERE SCHERMEN (< 1000px)
    ========================================= */
@@ -207,40 +199,33 @@
         gap: 5%;
         /* Minder extreme witruimte */
     }
-
     #settings {
         border-radius: 25px;
         /* Minder ronde hoeken op smal scherm */
     }
-
     .stream-toggle {
         width: 60px;
         height: 28px;
         margin-top: 10%;
     }
-
     .stream-toggle-track {
         border-width: 3px;
     }
-
     .spin-button {
         height: 40px;
         font-size: 1.1rem;
         padding: 0.5rem 1rem;
     }
-
     .input-container {
         font-size: 1rem;
         border-radius: 10px;
     }
-
     .scale-input,
     .color-input {
         min-height: 40px;
         font-size: 1.1rem;
         padding: 0.5rem 1rem;
     }
-
     .scale-input,
     .color-input,
     .text-input {
@@ -248,7 +233,6 @@
         font-size: 1.1rem;
         padding: 0.5rem 1rem;
     }
-
     #hideRotationMarker {
         width: 20px;
         height: 20px;

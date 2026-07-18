@@ -1,39 +1,59 @@
+/* =========================================
+   CHARACTER STAGE
+   Vult altijd 100% van zijn grid-cel, krimpt en
+   groeit mee met het venster. Geen vaste 600px
+   minimum meer - dat was de hoofdoorzaak van de
+   overflow op kleine schermen.
+   ========================================= */
 .character-stage {
     grid-area: character-stage;
-
-    min-height: 600px;
-    height: auto;
-
-    min-width: 600px;
-    width: auto;
-
-    /* background-color: #1eff00; */
-}
-
-#entire_body {
-    width: 100%;
     height: 100%;
-
-    transform: scale(var(--character_scale));
-
+    width: 100%;
+    min-height: 0;
+    min-width: 0;
     display: flex;
-    justify-content: flex-end;
-
-    margin-top: 30%;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
+/* #entire_body past zich nu precies om het lichaam heen
+   (shrink-to-fit) i.p.v. de hele stage te vullen. Dat is
+   noodzakelijk: de kop-laag hieronder gebruikt inset:0 om
+   exact dezelfde box te vullen als deze wrapper. Als deze
+   wrapper groter is dan de foto zelf, klopt die overlap niet
+   meer - vandaar de omschakeling naar inline-block. */
+#entire_body {
+    position: relative;
+    display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+    transform: scale(var(--character_scale));
+    transform-origin: bottom center;
+}
+
+/* #rotating en .head-stage zitten op hetzelfde element
+   (<div id="rotating" class="head-stage character">), dus
+   ze zijn hier samengevoegd i.p.v. los gedefinieerd - dat
+   voorkomt dat de twee regels elkaars transform overschrijven. */
 #rotating {
     --min-rotate-deg: 0deg;
     /* Beetje gelimiteerd zodat zijn nek niet breekt */
     --max-rotate-deg: 0deg;
     --huidige-rotatie: 0deg;
-
     --pos_y: 0px;
-
     --transition_speed_y: 0.2s;
     --transition_style_y: ease;
     --transition_speed: 0.6s;
     --transition_style: ease;
+
+    /* Vult exact dezelfde box als #entire_body (= exact dezelfde
+       box als het lichaam), zodat kop en lichaam altijd op
+       precies dezelfde coördinaten liggen. */
+    position: absolute;
+    inset: 0;
+    z-index: 2;
 
     /* Het draaipunt en de rotatie */
     transform-origin: var(--origin_x) var(--origin_y);
@@ -41,59 +61,45 @@
         /* x axis */
         clamp(-10px, var(--pos_y), 0px);
     /* y axis*/
-
     transform:
-        translateX(-50%) rotate(clamp(var(--min-rotate-deg), var(--huidige-rotatie), var(--max-rotate-deg)));
-
+        rotate(clamp(var(--min-rotate-deg), var(--huidige-rotatie), var(--max-rotate-deg)));
     transition:
         translate var(--transition_speed_y) var(--transition_style_y),
         transform var(--transition_speed) var(--transition_style);
 }
 
-.head-stage {
-    /* Positioneer het hoofd bovenaan in het midden van de stage */
-    top: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Zorgt dat hij perfect horizontaal gecentreerd is */
-
-    z-index: 2;
-}
-
 .character-head {
-    height: var(--character_picture_scale);
-    width: var(--character_picture_scale);
-
+    /* Vult altijd 100% van #rotating, wat exact overeenkomt
+       met de box van het lichaam - dus hoofd en lichaam blijven
+       altijd uitgelijnd, op elke schermgrootte. */
     position: absolute;
+    top: 0;
+    left: 0;
     object-fit: contain;
     z-index: 1;
 }
 
 .character-body {
+    /* Dit is de referentie-afbeelding: #entire_body past zich
+       precies om déze foto heen (shrink-to-fit). */
+    display: block;
+    position: relative;
     height: var(--character_picture_scale);
     width: var(--character_picture_scale);
-
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
     z-index: 0;
 }
 
 @media (max-width: 2000px) {
-
-    #entire_body {
-        margin-left: 20%;
-        margin-top: 50%;
-    }
-
-    .character-head {
-        --char_scale_mode: 1.2;
-
-        height: calc(var(--character_picture_scale) / var(--char_scale_mode));
-        width: calc(var(--character_picture_scale) / var(--char_scale_mode));
-    }
-
     .character-body {
         --char_scale_mode: 1.2;
-
         height: calc(var(--character_picture_scale) / var(--char_scale_mode));
         width: calc(var(--character_picture_scale) / var(--char_scale_mode));
     }
+    /* .character-head hoeft hier niet meer aangepast te worden:
+       die volgt automatisch (100%/100%) de nieuwe grootte van
+       #entire_body, die op zijn beurt de grootte van .character-body
+       volgt. */
 }
