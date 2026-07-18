@@ -1,39 +1,52 @@
-## Kleine uitleg:
-Het idee is dat je met je dnd karakter dus een virtuele representative hebt die je kan gebruiken op discord. Hierbij heb je het volgende nodig:
--  Discord
+# Virtual D&D Character Setup Guide
+
+## Brief explanation
+
+The idea is that with your D&D character you get a virtual representation that you can use on Discord. For this you'll need the following:
+
+- Discord
 - OBS
-- Microsoft paint
-- text editor (kan normale notepad zijn, kan ook vscode zijn). VScode is wat ingewikkelder om te installeren, hou het anders bij notepad voor simplisiteit.
+- Microsoft Paint
+- A text editor (a regular Notepad is fine, VS Code also works). VS Code is a bit more complex to install, so stick with Notepad for simplicity.
 
+## Getting started
 
-## Het opstarten:
-Eerst moet je een plaatje hebben. Deze heeft een dedicated folder binnen het project: "Frontend\character_art\Characters". Hier plaats je dus al je karakters plaatjes die je nodig hebt.
-Om het karakter goed te laten werken moet je dus een hoofd/mondvlak hebben en een lichaam/body.
-Het hoofd/mondvlak is hetgene wat op en neer gaat tijdens het praten en het lichaam/body is wat stationary blijft.
+First, you need an image. There's a dedicated folder within the project for this: `Frontend\character_art\Characters`. Place all the character images you need here.
 
+For the character to work properly, you need a head/mouth area and a body. The head/mouth area is what moves up and down while talking, and the body is what stays stationary.
 
-## Programma testen:
-open "command prompt" type in: "cd {De locatie van de folder}" <-- plaats achter de cd de locatie van de folder waar je hem hebt geplaatst (mijn locatie is "D:\Github\virtual_camera_character\Frontend" dus ik doe "cd D:\Github\virtual_camera_character\Frontend"). als je daarna nog steeds de oude locatie ziet waar je begint (meestal iets van "C:/Users/{user}" dan moet je even de schrijf nummer doen, voor mij is het d: dus type ik in: "D:" en dan pakt hij de correcte locatie).
+## Testing the program
 
-Eenmaal in de Frontend folder type in: "npm start". Dit start de applicatie. Hierbij heb ik dus een standaard karakter dat ik zelf wil gaan gebruiken samen met wat settings:
-Een knop helemaal boven de settings: Zorgt dat alle settings verdwijnen voor obs
-"click to talk": Pakt het geluid van je mic op
-"input scale of the character": verander de scale van het karakter (handig voor als hij te groot of te klein is)
-"greenscreen color": handig voor obs om de achtergrond te verwijderen met keys
-"toggle rotation marker": toggled een marker dat aantoont waar de origin van het hoofd zit. (om de locatie hiervan te veranderen wat wss moet gebeuren moet je een bestand vinden genaamd "style.css" in deze folder: "D:\Github\virtual_camera_character\Frontend\css", hierbij heb je de --origin_x: 511px;
-    /* Verplaatst naar links en rechts (de nek)*/
-    --origin_y: 165px;
-    /* Verplaatst naar boven en beneden (de nek) */
-Deze 2 moeten worden aangepast op de nieuwe positie die jij wilt voor je foto, dit kan makkelijk in notepad. Eenmaal aangepast en opgeslagen met ctrl + s moet je in de applicatie ctrl + shift + r doen om het te herladen.
-)
+Open "Command Prompt" and type: `cd {the location of the folder}` — put the location of the folder where you placed it after the `cd` (my location is `D:\Github\virtual_camera_character\Frontend`, so I type `cd D:\Github\virtual_camera_character\Frontend`).
 
-"head picture path": De naam van het bestand van het hoofd. Je hoeft alleen de naam van de photo te doen
-"body picture path": De naam van het bestand van het lichaam. Zelfde als het hoofd, alleen de naam van de foto
+If after that you still see the old location where you started (usually something like `C:\Users\{user}`), you need to switch drives first. For me it's the D drive, so I type `D:` and then it will take you to the correct location.
 
-## eigen karakter:
-Om een eigen karakter te hebben moet je een paar dingen doen:
-Karakter generen/maken
-achtergrond van het plaatje verwijderen
-hoofdvlak wegsnijden van het lichaam
-lichaam en hoofd apart opslaan (zorg ervoor dat ze precies dezelfde afmeting zijn, dus doe alsof het lichaam en het hoofd nog samen zijn maar wel 2 aparte foto's [bekijk andere foto's voor referentie]).
-plaats beide afbeeldingen in de "virtual_camera_character\Frontend\character_art\Characters" folder
+Once you're in the Frontend folder, type: `npm start`. This starts the application. This comes with a default character that I use myself, along with a few settings:
+
+- **Button at the very top of the settings**: Hides all the settings for OBS
+- **"Click to talk"**: Picks up audio from your mic
+- **"Input scale of the character"**: Changes the scale of the character (useful if it's too big or too small)
+- **"Greenscreen color"**: Useful for OBS to remove the background using chroma keying
+- **"Toggle rotation marker"**: Toggles a marker that shows where the origin of the head is. (To change this position — which you'll probably need to do — you need to find a file called `style.css` in this folder: `D:\Github\virtual_camera_character\Frontend\css`. In it, you'll find:
+
+  ```css
+  --origin_x: 511px;
+  /* Moves left and right (the neck) */
+  --origin_y: 165px;
+  /* Moves up and down (the neck) */
+  ```
+
+  These two values need to be adjusted to the new position you want for your photo. This can easily be done in Notepad. Once adjusted and saved with Ctrl + S, you need to do Ctrl + Shift + R in the application to reload it.)
+
+- **"Head picture path"**: The filename of the head image. You only need to enter the name of the photo.
+- **"Body picture path"**: The filename of the body image. Same as the head — just the name of the photo.
+
+## Creating your own character
+
+To have your own character, you need to do a few things:
+
+1. Generate/create a character
+2. Remove the background of the image
+3. Cut the head/mouth area away from the body
+4. Save the body and head separately (make sure they have exactly the same dimensions — pretend the body and head are still combined, but save them as 2 separate photos [check other photos for reference])
+5. Place both images in the `virtual_camera_character\Frontend\character_art\Characters` folder
