@@ -1,0 +1,37 @@
+.setting-group {
+    font-size: 0.8rem;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.setting-group-header {
+    font-weight: bold;
+
+    cursor: pointer;
+    padding: 8px 12px;
+    background: #f0f0f0;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.setting-group-header::before {
+    content: "▾";
+    display: inline-block;
+    transition: transform 0.15s ease;
+}
+
+.setting-group.closed .setting-group-header::before {
+    transform: rotate(-90deg);
+}
+
+.setting-group-content {
+    padding: 8px 12px;
+}
+
+.setting-group.closed .setting-group-content {
+    display: none;
+}

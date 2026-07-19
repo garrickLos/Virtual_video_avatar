@@ -3,6 +3,8 @@ import {settings} from "./edit_settings.js";
 import { Talking, initCharacterPicture, initCharacterScale } from "./characterEdit.js";
 import { initGreenscreenColor } from './greenscreenColor.js';
 
+import { groupAllSettings } from "./grouped_settings/index.js";
+
 const button_el = document.getElementById("spinButton");
 const settings_el = document.getElementById("settings");
 const toggle_el = document.getElementById("hideSettingsToggle");
@@ -48,3 +50,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     initGreenscreenColor();
 });
+
+groupAllSettings();

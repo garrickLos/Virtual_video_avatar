@@ -40,7 +40,6 @@ class SettingsManager {
     async setValue(key, value) {
         this.currentSettings[key] = value;
         await this.saveSettings();
-        console.log(`Waarde van '${key}' is nu:`, value);
     }
 
     // async toegevoegd

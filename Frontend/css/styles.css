@@ -2,9 +2,9 @@
 @import url("./settings-style.css");
 
 :root {
-    --origin_x: 510px;
+    --origin_x: 50%;
     /* Verplaatst naar links en rechts (de nek)*/
-    --origin_y: 164px;
+    --origin_y: 15%;
     /* Verplaatst naar boven en beneden (de nek) */
 
     --character_scale: 1;
@@ -53,7 +53,7 @@ body {
 }
 
 #debug-stip {
-    --visibility: visible;
+    --visibility: hidden;
 
     position: absolute;
     left: var(--origin_x);

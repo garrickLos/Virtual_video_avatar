@@ -1,15 +1,25 @@
+@import url("./components/settings-group.css");
+
 /* =========================================
    STANDAARD (FULL SCREEN) - JOUW ORIGINELE CSS
    ========================================= */
 #settings-wrap {
-    width: auto;
-    height: 100%;
+    grid-area: settings-wrap;
+    
     min-height: 0;
     min-width: 0;
-    grid-area: settings-wrap;
+
+    width: auto;
+    
+    height: 100%;
+    
+    
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas: "toggle_button" "talk_button";
+
+    justify-items: center;
+
     overflow-y: auto;
     /* vangnet: als er echt te weinig hoogte is, scrollt alleen dit paneeltje - de rest blijft altijd passen */
 }
@@ -28,7 +38,7 @@
     scrollbar-width: thin;
     scrollbar-color: color-mix(in srgb, #2f6f4f 60%, transparent) transparent;
 
-    transition: height 0.15s ease, padding 0.15s ease, margin 0.15s ease;
+    transition: height 2s ease, padding 0.15s ease, margin 0.15s ease;
     display: flex;
     flex-direction: column;
     gap: 1%;
@@ -100,15 +110,21 @@
 }
 /* --- Containers voor de inputs --- */
 .input-container {
-    background-color: rgb(215, 215, 215);
-    padding: 3%;
+    width: 100%;
+
+    /* background-color: rgb(215, 215, 215); */
+
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     box-sizing: border-box;
-    width: 100%;
+
+    padding: 3%;
+
+    margin-bottom: 2%;
 }
+
 /* --- Scale Input --- */
 .scale-input {
     width: 100%;
@@ -190,6 +206,11 @@
     height: 30px;
     cursor: pointer;
 }
+
+.picture-input {
+    font-size: 0.7rem;
+}
+
 /* =========================================
    HALF SCHERM / KLEINERE SCHERMEN (< 1000px)
    ========================================= */
@@ -230,7 +251,6 @@
     .color-input,
     .text-input {
         min-height: 40px;
-        font-size: 1.1rem;
         padding: 0.5rem 1rem;
     }
     #hideRotationMarker {

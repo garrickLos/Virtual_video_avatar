@@ -72,6 +72,11 @@
     /* Vult altijd 100% van #rotating, wat exact overeenkomt
        met de box van het lichaam - dus hoofd en lichaam blijven
        altijd uitgelijnd, op elke schermgrootte. */
+    height: var(--character_picture_scale);
+    width: var(--character_picture_scale);
+    max-height: 100%;
+    max-width: 100%;
+    
     position: absolute;
     top: 0;
     left: 0;
