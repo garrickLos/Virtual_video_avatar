@@ -45,6 +45,11 @@ export function initCharacterPicture() {
         return fileNameWithExt
     };
 
+    const removeQuotes = (str) => {
+        // haalt alleen " weg aan begin en eind van de string
+        return str.replace(/^"(.*)"$/, '$1');
+    };
+
     const setupPathInput = (inputElement, settingKey, imageElement) => {
         if (!inputElement) return;
 
@@ -55,7 +60,8 @@ export function initCharacterPicture() {
             inputElement.value = opgeslagenWaarde;
             // Update het plaatje op het scherm
             
-            if (imageElement) imageElement.src = `./character_art/Characters/${opgeslagenWaarde}`;
+            if (imageElement) imageElement.src = opgeslagenWaarde;
+            // `./character_art/Characters/${opgeslagenWaarde}`;
         }
 
         // --- STAP 2: AANPASSEN (Schrijven) ---
@@ -65,14 +71,15 @@ export function initCharacterPicture() {
             if (!rawInput.trim()) return;
 
             // Roep de snij-functie aan (bijv: "C:\images\sentra.png" -> "sentra")
-            const bestandsNaam = extractFileName(rawInput);
+            const bestandsNaam = removeQuotes(rawInput);
 
             // Sla de opgeschoonde naam op in je instellingen
             await settings.setValue(settingKey, bestandsNaam);
 
             // Update direct de afbeelding op het scherm
             if (imageElement) {
-                imageElement.src = `./character_art/Characters/${bestandsNaam}`;
+                imageElement.src = bestandsNaam;
+                // `./character_art/Characters/${bestandsNaam}`;
             }
 
             // Maak het invulveld 'schoon' zodat alleen de bestandsnaam blijft staan in de app

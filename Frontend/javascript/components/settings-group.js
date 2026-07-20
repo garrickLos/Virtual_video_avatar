@@ -19,7 +19,7 @@ export function createSettingsGroup(groupName, ...settingElements) {
     }, ...settingElements);
 
     const group = createEl("div", {
-        className: "setting-group"
+        className: "setting-group closed"
     }, header, content);
 
     settingsWrapper.appendChild(group);

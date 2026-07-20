@@ -29,9 +29,12 @@
 
     max-height: 100%;
 
-    box-sizing: border-box;
-
     font-size: 1.3rem;
+
+    background-color: aliceblue;
+    border-radius: 5px;
+
+    box-sizing: border-box;
 
     overflow-y: scroll;
     
@@ -42,8 +45,6 @@
     display: flex;
     flex-direction: column;
     gap: 1%;
-    background-color: aliceblue;
-    /* border-radius: 50px 0 0 50px; */
 
     padding: 5% 4% 5% 5%;
 
@@ -58,16 +59,20 @@
     margin-bottom: 0;
     overflow: hidden;
 }
+
 /* --- Chroma key toggle --- */
 .stream-toggle {
     grid-area: toggle_button;
     width: 100px;
     height: 42px;
-    margin-top: 20%;
+
+    margin: 10% 0 5% 0;
+    
     display: inline-block;
     justify-self: center;
     cursor: pointer;
 }
+
 .stream-toggle input {
     position: absolute;
     opacity: 0;
@@ -108,13 +113,17 @@
 .spin-button:active {
     transform: scale(0.97);
 }
+
+input {
+    border-radius: 5px;
+}
+
 /* --- Containers voor de inputs --- */
 .input-container {
     width: 100%;
 
     /* background-color: rgb(215, 215, 215); */
 
-    border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -135,7 +144,6 @@
     color: white;
     background: color-mix(in srgb, #2f6f4f 70%, black 30%);
     border: 2px solid #2f6f4f;
-    border-radius: 0.6rem;
     outline: none;
     transition: border-color 0.15s ease, background-color 0.15s ease;
 }
@@ -146,13 +154,13 @@
 .text-input {
     width: 100%;
     min-height: 50px;
+    
     box-sizing: border-box;
     padding: 0.8rem 1.2rem;
     /* Iets kleiner voor lange paden */
     color: white;
     background: color-mix(in srgb, #2f6f4f 70%, black 30%);
     border: 2px solid #2f6f4f;
-    border-radius: 0.6rem;
     outline: none;
     transition: border-color 0.15s ease, background-color 0.15s ease;
 }
@@ -169,7 +177,7 @@
     padding: 0.5rem;
     background: color-mix(in srgb, #2f6f4f 70%, black 30%);
     border: 2px solid #2f6f4f;
-    border-radius: 0.6rem;
+
     cursor: pointer;
     outline: none;
     transition: border-color 0.15s ease, background-color 0.15s ease;
@@ -209,6 +217,19 @@
 
 .picture-input {
     font-size: 0.7rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    cursor: pointer;
+}
+
+.rotation-container label {
+    margin-top: 2%;
+
+    display: flex;
+
+    justify-content: start;
+    align-items: center;
 }
 
 /* =========================================

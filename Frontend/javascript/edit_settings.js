@@ -2,9 +2,11 @@ class SettingsManager {
     constructor() {
         this.storageKey = 'character_settings';
         this.defaultSettings = { 
-            "head_picture": "sentra", 
-            "body_picture": "../character_art/Characters/dnd_vulivant_body.png",
-            "background_color": "#ff6600"
+            "head_picture": "../character_art/Characters/dnd_MerchantV3-body.png", 
+            "body_picture": "../character_art/Characters/dnd_MerchantV3-head.png",
+            "background_color": "rgb(0, 255, 0)",
+            "rotation_marker_posX": 0.5,
+            "rotation_marker_posY": 0.5
         };
         this.currentSettings = {};
     }

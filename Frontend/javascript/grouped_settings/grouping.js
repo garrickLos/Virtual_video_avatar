@@ -1,6 +1,7 @@
-import { characterSettings, backgroundSettings } from "./index.js";
+import {    characterSettings, backgroundSettings, talkingSettings } from "./index.js";
 
 export function groupAllSettings(){
     characterSettings();
     backgroundSettings();
+    talkingSettings();
 }
