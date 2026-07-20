@@ -7,7 +7,9 @@ if [ "$CURRENT_BRANCH" != "main" ]; then
   exit 1
 fi
 
-npm version patch --no-git-tag-version
+BUMP_TYPE=${1:-patch}   # standaard patch, tenzij je iets anders meegeeft
+
+npm version "$BUMP_TYPE" --no-git-tag-version
 VERSION=$(node -p "require('./package.json').version")
 git add package.json package-lock.json
 git commit -m "chore: bump version to $VERSION"
