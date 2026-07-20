@@ -1,49 +1,70 @@
-const { app, BrowserWindow, ipcMain, shell } = require('electron/main')
-
-const Store = require('electron-store');
-const store = new Store({
-  cwd: __dirname,
-  name: "character_settings"
-});
-
+const { app, BrowserWindow, ipcMain, shell } = require('electron/main');
 const path = require('node:path');
-const { cwd } = require('node:process');
 
-function createWindow () {
+let store; // <-- pas later instantiëren
+
+function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
-  })
+  });
 
-  win.loadFile('index.html')
+  win.loadFile('index.html');
 }
 
-ipcMain.handle('store-get', (event, key) => {
-  return store.get(key);  // <--- kleine letter s!
-});
-
-ipcMain.handle('store-set', (event, key, val) => {
-    store.set(key, val);  // <--- kleine letter s!
-});
-
 app.whenReady().then(() => {
-  createWindow();
+  const Store = require('electron-store');
+  store = new Store({
+    cwd: app.getPath('userData'),
+    name: "character_settings",
+    schema: {
+      character_settings: {
+        type: 'object',
+        properties: {
+          head_picture: { type: 'string' },
+          body_picture: { type: 'string' },
+          background_color: { type: 'string' },
+          rotation_marker_posX: { type: 'number' },
+          rotation_marker_posY: { type: 'number' }
+        }
+      }
+    },
+    defaults: {
+      character_settings: {
+        head_picture: "./character_art/Characters/dnd_MerchantV3-head.png",
+        body_picture: "./character_art/Characters/dnd_MerchantV3-body.png",
+        background_color: "rgb(0, 255, 0)",
+        rotation_marker_posX: 0.5,
+        rotation_marker_posY: 0.5
+      }
+    },
 
-  // Deze regel opent automatisch de map waar config.json in staat!
-  // shell.showItemInFolder(store.path);
+    clearInvalidConfig: true // reset naar defaults i.p.v. crashen bij corrupte JSON
+  });
+
+  // IPC handlers pas registreren als store bestaat
+  ipcMain.handle('store-get', (event, key) => {
+    return store.get(key);
+  });
+
+  ipcMain.handle('store-set', (event, key, val) => {
+    store.set(key, val);
+  });
+
+  createWindow();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+      createWindow();
     }
-  })
-})
+  });
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});

@@ -12,6 +12,19 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 contextBridge.exposeInMainWorld('storeAPI', {
-    get: (key) => ipcRenderer.invoke('store-get', key),
-    set: (key, val) => ipcRenderer.invoke('store-set', key, val)
+    get: async (key) => {
+        try {
+            return await ipcRenderer.invoke('store-get', key);
+        } catch (err) {
+            console.error('storeAPI.get failed:', err);
+            return undefined;
+        }
+    },
+    set: async (key, val) => {
+        try {
+            return await ipcRenderer.invoke('store-set', key, val);
+        } catch (err) {
+            console.error('storeAPI.set failed:', err);
+        }
+    }
 });
