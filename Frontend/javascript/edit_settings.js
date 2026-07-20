@@ -2,8 +2,8 @@ class SettingsManager {
     constructor() {
         this.storageKey = 'character_settings';
         this.defaultSettings = { 
-            "head_picture": "../character_art/Characters/dnd_MerchantV3-body.png", 
-            "body_picture": "../character_art/Characters/dnd_MerchantV3-head.png",
+            "head_picture": "./Frontend/character_art/Characters/dnd_MerchantV3-body.png", 
+            "body_picture": "./Frontend/character_art/Characters/dnd_MerchantV3-head.png",
             "background_color": "rgb(0, 255, 0)",
             "rotation_marker_posX": 0.5,
             "rotation_marker_posY": 0.5
