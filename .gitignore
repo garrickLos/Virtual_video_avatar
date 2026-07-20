@@ -35,5 +35,8 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 
+# settings die niet moeten worden meegenomen
+character_settings.json
+
 # temp backend ignore until fixed later
 Backend/
