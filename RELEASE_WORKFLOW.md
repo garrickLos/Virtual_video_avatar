@@ -106,9 +106,15 @@ if [ "$CURRENT_BRANCH" != "main" ]; then
   exit 1
 fi
 
-BUMP_TYPE=${1:-patch}   # defaults to patch if no argument is given
+BUMP_TYPE=${1:-patch}   # patch (default), minor, major, or prerelease
 
-npm version "$BUMP_TYPE" --no-git-tag-version
+if [ "$BUMP_TYPE" == "prerelease" ]; then
+  PREID=${2:-alpha}     # alpha (default), or beta, rc, etc.
+  npm version prerelease --preid="$PREID" --no-git-tag-version
+else
+  npm version "$BUMP_TYPE" --no-git-tag-version
+fi
+
 VERSION=$(node -p "require('./package.json').version")
 git add package.json package-lock.json
 git commit -m "chore: bump version to $VERSION"
@@ -118,6 +124,23 @@ echo "Pushed: v$VERSION"
 ```
 
 **Important:** the tag must be created with `git tag -a` (annotated tag), not `git tag` (lightweight tag). `git push --follow-tags` silently ignores lightweight tags, which was the root cause of releases not appearing.
+
+### Usage
+
+| Command | Example | When to use |
+|---|---|---|
+| `bash bump.sh` or `bash bump.sh patch` | `1.0.0` → `1.0.1` | Bug fix, small change |
+| `bash bump.sh minor` | `1.0.0` → `1.1.0` | New feature, backwards compatible |
+| `bash bump.sh major` | `1.0.0` → `2.0.0` | Breaking change |
+| `bash bump.sh prerelease` | `1.0.0` → `1.0.1-alpha.0` | Alpha pre-release |
+| `bash bump.sh prerelease beta` | `1.0.0` → `1.0.1-beta.0` | Beta pre-release |
+
+Running `bash bump.sh prerelease` again automatically increments the pre-release number:
+```
+1.0.1-alpha.0 -> 1.0.1-alpha.1 -> 1.0.1-alpha.2 ...
+```
+
+Each pre-release creates a **new, unique tag** — no overwriting of existing tags, and electron-builder creates a separate GitHub Release for each pre-release version.
 
 ---
 
@@ -172,6 +195,35 @@ This automatically:
 
 - Go to your repo's **Actions** tab on GitHub and confirm the workflow run succeeds (it builds on Windows, macOS, and Linux — this takes a few minutes).
 - Go to **Releases** and confirm the new version has the `.exe`, `.dmg`, and `.AppImage` files attached.
+
+---
+
+## Moving an existing tag (exception, not routine)
+
+Tags are meant to be a permanent pointer to one specific commit. **Prefer a pre-release bump instead of this** whenever possible. Only overwrite an existing tag if you specifically need to patch that exact version without creating a new one — e.g. fixing a bug in a pre-release before anyone else has pulled it.
+
+```bash
+# 1. Commit the fix on main
+git add .
+git commit -m "fix: bug in v0.1.7"
+git push
+
+# 2. Delete the tag locally
+git tag -d v0.1.7
+
+# 3. Delete the tag on GitHub
+git push origin :refs/tags/v0.1.7
+
+# 4. Recreate the tag on the new commit
+git tag -a v0.1.7 -m "Release v0.1.7 (fixed)"
+
+# 5. Push it again
+git push origin v0.1.7
+```
+
+This triggers a fresh build. `electron-builder --publish always` overwrites the existing release assets with the new build automatically.
+
+**Warning:** if anyone else (or another one of your machines) already pulled the old tag, their local tag becomes out of sync and can cause conflicts on their next pull. Safe for a solo alpha project, but avoid doing this on tags others may already be using.
 
 ---
 
