@@ -47,7 +47,7 @@ function set_pos(element_id, css_var, settings_key) {
         document.documentElement.style.setProperty(css_var, percentage_value + "%");
 
         if (settings_key) {
-            settings.setValue(settings_key, original_value);
+            settings.setValue(settings_key, parseFloat(original_value));
         }
     };
 

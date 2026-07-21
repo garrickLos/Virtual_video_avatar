@@ -16,9 +16,11 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  console.log('UserData pad:', app.getPath('userData'));
+
   const Store = require('electron-store');
   store = new Store({
-    cwd: app.getPath('userData'),
+    cwd: app.isPackaged ? app.getPath('userData') : __dirname,
     name: "character_settings",
     schema: {
       character_settings: {
@@ -34,11 +36,11 @@ app.whenReady().then(() => {
     },
     defaults: {
       character_settings: {
-        head_picture: "./character_art/Characters/dnd_MerchantV3-head.png",
-        body_picture: "./character_art/Characters/dnd_MerchantV3-body.png",
+        head_picture: "./character_art/Characters/Default-head.png",
+        body_picture: "./character_art/Characters/Default-body.png",
         background_color: "rgb(0, 255, 0)",
-        rotation_marker_posX: 0.5,
-        rotation_marker_posY: 0.5
+        rotation_marker_posX: 0.52,
+		    rotation_marker_posY: 0.54
       }
     },
 
