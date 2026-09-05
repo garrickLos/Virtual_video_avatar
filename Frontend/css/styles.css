@@ -35,8 +35,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--greenscreen_color);
     font-family: Arial, sans-serif;
+
+    > #character_screen {
+        background: var(--greenscreen_color);
+    }
 }
 
 .scene {

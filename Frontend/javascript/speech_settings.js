@@ -11,26 +11,41 @@ let marker_visibility = false;
 
 // speech_settings.js
 function initSpeechSettings() {
+
     const toggle_marker_el = document.getElementById("hideRotationMarker");
 
     toggle_el?.addEventListener("change", toggleSettingsVisibility);
     toggle_marker_el?.addEventListener("change", toggleRotateMarker);
 
+    applyMarkerVisibility(settings.getValue("rotation_marker_active"));
+
     set_pos("setRotationPosY", origin_y, "rotation_marker_posY");
     set_pos("setRotationPosX", origin_x, "rotation_marker_posX");
+
+    settings.subscribe(() => {
+        applyMarkerVisibility(settings.getValue("rotation_marker_active"));
+    });
 }
 
 function toggleSettingsVisibility() {
     settings_el?.classList.toggle("hidden", toggle_el.checked);
 }
 
-function toggleRotateMarker() {
+async function toggleRotateMarker(event) {
+    marker_visibility = event.target.checked;
+    applyMarkerVisibility(marker_visibility);
+    await settings.setValue("rotation_marker_active", marker_visibility);
+}
 
-    marker_visibility = !marker_visibility;
+function applyMarkerVisibility(value) {
+    marker_visibility = Boolean(value);
     debug_stip?.style.setProperty(
         "--visibility",
         marker_visibility ? "visible" : "hidden"
     );
+
+    const toggle_marker_el = document.getElementById("hideRotationMarker");
+    if (toggle_marker_el) toggle_marker_el.checked = marker_visibility;
 }
 
 function set_pos(element_id, css_var, settings_key) {

@@ -37,3 +37,5 @@ contextBridge.exposeInMainWorld('storeAPI', {
 contextBridge.exposeInMainWorld('api', {
   createWindow: () => ipcRenderer.send('create-window')
 });
+
+console.log('Chromium versie:', process.versions.chrome);
