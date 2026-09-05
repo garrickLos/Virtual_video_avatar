@@ -1,4 +1,4 @@
-export { createSettingsGroup} from "./settings-group.js";
+export { createSettingsGroup} from "./advancedSettings-group.js";
 
 export { createEl } from "./domHelper.js"; 
 

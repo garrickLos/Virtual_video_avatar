@@ -1,6 +1,6 @@
 import { createEl } from "./index.js";
 
-const settingsWrapper = document.querySelector("#settings");
+const settingsWrapper = document.querySelector(".advanced_settings");
 
 /**
  * Maakt een inklapbare instellingen-groep aan.
@@ -9,6 +9,8 @@ const settingsWrapper = document.querySelector("#settings");
  * @returns {HTMLElement} de aangemaakte group
  */
 export function createSettingsGroup(groupName, ...settingElements) {
+    if (!settingsWrapper) return null;
+
     const header = createEl("div", {
         className: "setting-group-header",
         text: groupName
@@ -27,10 +29,12 @@ export function createSettingsGroup(groupName, ...settingElements) {
 }
 
 // Event delegation: één listener voor alle (ook toekomstige) groepen.
-settingsWrapper.addEventListener("click", (event) => {
-    const header = event.target.closest(".setting-group-header");
-    if (!header) return; // klik was niet op een header, dus negeren
+if (settingsWrapper) {
+    settingsWrapper.addEventListener("click", (event) => {
+        const header = event.target.closest(".setting-group-header");
+        if (!header) return;
 
-    const group = header.closest(".setting-group");
-    group?.classList.toggle("closed");
-});
+        const group = header.closest(".setting-group");
+        group?.classList.toggle("closed");
+    });
+}

@@ -3,20 +3,18 @@ import { settings } from "./edit_settings.js";
 export function initGreenscreenColor(inputId = 'greenscreen-color-input') {
     const colorInput = document.getElementById(inputId);
 
-    if (!colorInput) {
-        console.warn(`Element met ID '${inputId}' is niet gevonden.`);
-        return;
-    }
+    const applyGreenscreenColor = () => {
+        const opgeslagenKleur = settings.getValue("background_color");
+        if (!opgeslagenKleur) return;
 
-    // --- STAP 1: OPHALEN EN INSTELLEN (Lezen) ---
-    // Haal de opgeslagen kleur (of default) op uit de database
-    const opgeslagenKleur = settings.getValue("background_color");
-    
-    // Pas de CSS variabele direct aan
-    document.documentElement.style.setProperty('--greenscreen_color', opgeslagenKleur);
-    
-    // Zorg dat de colorpicker in de HTML ook deze kleur laat zien
-    colorInput.value = opgeslagenKleur;
+        document.documentElement.style.setProperty('--greenscreen_color', opgeslagenKleur);
+        if (colorInput) colorInput.value = opgeslagenKleur;
+    };
+
+    applyGreenscreenColor();
+    settings.subscribe(applyGreenscreenColor);
+
+    if (!colorInput) return;
 
 
     // --- STAP 2: GEBRUIKERSINTERACTIE (Schrijven) ---
