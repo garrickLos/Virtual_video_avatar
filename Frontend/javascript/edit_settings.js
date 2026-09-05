@@ -2,10 +2,15 @@ class SettingsManager {
     constructor() {
         this.storageKey = 'character_settings';
         this.currentSettings = {};
+        this.changeListeners = new Set();
     }
 
     async init(){
         await this.loadSettings();
+        window.storeAPI.onChange((newSettings) => {
+            this.currentSettings = newSettings;
+            for (const listener of this.changeListeners) listener(this.currentSettings);
+        });
     }
 
     async loadSettings() {
@@ -29,6 +34,11 @@ class SettingsManager {
     async updateMultiple(newValues) {
         this.currentSettings = { ...this.currentSettings, ...newValues };
         await this.saveSettings();
+    }
+
+    subscribe(listener) {
+        this.changeListeners.add(listener);
+        return () => this.changeListeners.delete(listener);
     }
 }
 

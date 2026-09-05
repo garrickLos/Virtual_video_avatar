@@ -26,5 +26,16 @@ contextBridge.exposeInMainWorld('storeAPI', {
         } catch (err) {
             console.error('storeAPI.set failed:', err);
         }
+      },
+      onChange: (callback) => {
+        const listener = (_event, value) => callback(value);
+        ipcRenderer.on('settings-changed', listener);
+        return () => ipcRenderer.removeListener('settings-changed', listener);
     }
 });
+
+contextBridge.exposeInMainWorld('api', {
+  createWindow: () => ipcRenderer.send('create-window')
+});
+
+console.log('Chromium versie:', process.versions.chrome);

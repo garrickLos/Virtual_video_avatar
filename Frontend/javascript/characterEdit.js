@@ -32,11 +32,15 @@ export function initCharacterPicture() {
         const savedHead = settings.getValue("head_picture");
         const savedBody = settings.getValue("body_picture");
 
-        head_el.src = savedHead;
-        body_el.src = savedBody;
+        if (head_el && savedHead) head_el.src = savedHead;
+        if (body_el && savedBody) body_el.src = savedBody;
+
+        if (headInput && savedHead) headInput.value = savedHead;
+        if (bodyInput && savedBody) bodyInput.value = savedBody;
     }
 
-    // setCharacter();
+    setCharacter();
+    settings.subscribe(setCharacter);
 
     const extractFileName = (fullPath) => {
         // 1. Haal de map-paden weg (werkt voor zowel Windows \ als Mac /)
@@ -59,7 +63,7 @@ export function initCharacterPicture() {
             // Laat de huidige naam zien met .png erbij
             inputElement.value = opgeslagenWaarde;
             // Update het plaatje op het scherm
-            
+
             if (imageElement) imageElement.src = opgeslagenWaarde;
             // `./character_art/Characters/${opgeslagenWaarde}`;
         }
@@ -91,24 +95,26 @@ export function initCharacterPicture() {
     setupPathInput(bodyInput, "body_picture", body_el);
 }
 
-export function initCharacterScale(inputId = 'character-scale-input') {
+export function initCharacterScale(inputId = 'character_scale_input') {
     const scaleInput = document.getElementById(inputId);
 
-    if (!scaleInput) {
-        console.warn(`Element met ID '${inputId}' is niet gevonden.`);
-        return;
-    }
+    const applyScale = (value) => {
+        if (value === undefined || value === null) return;
 
-    // Functie om de CSS variabele te updaten op de :root (html element)
-    const updateScaleVariable = (value) => {
         document.documentElement.style.setProperty('--character_scale', value);
+        if (scaleInput) scaleInput.value = value;
     };
 
-    // Luister naar elke update in het invoerveld (real-time)
-    scaleInput.addEventListener('input', (event) => {
-        updateScaleVariable(event.target.value);
-    });
+    applyScale(settings.getValue(inputId));
+    settings.subscribe(() => applyScale(settings.getValue(inputId)));
 
-    // Initialiseer de CSS variabele direct met de beginwaarde van de input
-    updateScaleVariable(scaleInput.value);
+    if (scaleInput) {
+        scaleInput.addEventListener('input', async (event) => {
+            const value = parseFloat(event.target.value);
+            if (Number.isNaN(value)) return;
+
+            applyScale(value);
+            await settings.setValue(inputId, value);
+        });
+    }
 }

@@ -6,8 +6,6 @@ import { initSpeechSettings } from "./speech_settings.js";
 
 import { groupAllSettings } from "./grouped_settings/index.js";
 
-groupAllSettings();
-
 const button_el = document.getElementById("spinButton");
 
 const state = { isTalking: false };
@@ -19,14 +17,28 @@ export function Start() {
     Talking(state);
 }
 
-button_el.addEventListener("click", Start);
+button_el?.addEventListener("click", Start);
 
 document.addEventListener('DOMContentLoaded', async () => {
     await settings.init();
+
+  if (document.getElementById("settings")) {
+    groupAllSettings();
+  }
 
     initCharacterScale();
     initCharacterPicture();
     
     initGreenscreenColor();
     initSpeechSettings();
+});
+
+function createBrowserWindow() {
+  window.api.createWindow();
+}
+
+const button = document.getElementById("newWindow");
+button?.addEventListener("click", (event) => {
+  event.preventDefault();
+  createBrowserWindow();
 });
