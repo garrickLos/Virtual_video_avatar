@@ -18,6 +18,7 @@ function createWindow(htmlFileName, key) {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname, "resources/logo/Virtual_Video_Avatar_logo.ico"),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
