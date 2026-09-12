@@ -101,20 +101,35 @@ export function initCharacterScale(inputId = 'character_scale_input') {
     const applyScale = (value) => {
         if (value === undefined || value === null) return;
 
-        document.documentElement.style.setProperty('--character_scale', value);
-        if (scaleInput) scaleInput.value = value;
+        document.documentElement.style.setProperty(
+            '--character_scale',
+            value
+        );
+
+        if (scaleInput) {
+            scaleInput.value = value;
+        }
     };
 
-    applyScale(settings.getValue(inputId));
-    settings.subscribe(() => applyScale(settings.getValue(inputId)));
+    const setScale = () => {
+        if (scaleInput) {
+            scaleInput.addEventListener('input', async (event) => {
+                const value = parseFloat(event.target.value);
 
-    if (scaleInput) {
-        scaleInput.addEventListener('input', async (event) => {
-            const value = parseFloat(event.target.value);
-            if (Number.isNaN(value)) return;
+                if (Number.isNaN(value)) return;
 
-            applyScale(value);
-            await settings.setValue(inputId, value);
-        });
+                applyScale(value);
+                await settings.setValue(inputId, value);
+            });
+        }
     }
+
+    applyScale(settings.getValue(inputId));
+    setScale(settings.getValue(inputId));
+
+    const unsubscribe = settings.subscribe(() => {
+        applyScale(settings.getValue(inputId));
+    });
+
+    return unsubscribe;
 }

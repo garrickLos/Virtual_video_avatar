@@ -6,12 +6,12 @@ export function setCharacterSettings() {
         [
             {
                 label: {
-                    for: "character-scale-input",
+                    for: "character_scale_input",
                     text: "Input scale of the character"
                 },
                 input: {
                     type: "number",
-                    id: "character-scale-input",
+                    id: "character_scale_input",
                     className: "scale-input",
                     min: 0,
                     max: 2.00,
