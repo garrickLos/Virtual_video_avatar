@@ -42,10 +42,10 @@ const faqButton = document.getElementById("new_FAQWindow");
 
 button?.addEventListener("click", (event) => {
   event.preventDefault();
-  createBrowserWindow("./settings.html", "settings");
+  createBrowserWindow("./window.settings.html", "settings");
 });
 
 faqButton?.addEventListener("click", (event) => {
   event.preventDefault();
-  createBrowserWindow("./faq.html", "faq");
+  createBrowserWindow("./window.faq.html", "faq");
 });

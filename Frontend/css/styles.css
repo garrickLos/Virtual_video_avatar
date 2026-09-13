@@ -28,7 +28,6 @@ body {
     height: 100%;
     width: 100%;
     margin: 0;
-    overflow: hidden;
 }
 
 body {
@@ -42,7 +41,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    > #character_screen {
+    >#character_screen {
         background: var(--greenscreen_color);
     }
 }
@@ -69,7 +68,7 @@ body {
     align-items: flex-start;
 }
 
-#settings_screen > #settings-wrap {
+#settings_screen>#settings-wrap {
     width: min(100%, 900px);
     min-height: 100vh;
     margin: 0 auto;
@@ -81,7 +80,6 @@ body {
     max-height: none;
     margin: 0;
     padding: 0;
-    overflow: visible;
     background: transparent;
 }
 
@@ -91,7 +89,17 @@ body {
     padding: var(--spacing-lg);
 }
 
-.settings-card {
+#faq_cards {
+    height: auto;
+    overflow: visible;
+
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: var(--spacing-lg);
+}
+
+.card {
     padding: var(--spacing-lg);
     background: #ffffff;
     border-radius: var(--radius-lg);
@@ -144,7 +152,7 @@ body {
         grid-template-areas: "settings-wrap . character-stage";
     }
 
-    #settings_screen > #settings-wrap {
+    #settings_screen>#settings-wrap {
         padding: var(--spacing-md);
     }
 }
