@@ -99,9 +99,11 @@
 
 .spin-button {
     width: 100%;
-    height: 50px;
 
-    font-size: 1.3rem;
+    min-height: 50px;
+    height: auto;
+
+    font-size: 1rem;
 
     grid-area: talk_button;
     padding: 0.8rem 1.2rem;
@@ -111,6 +113,10 @@
     color: white;
     cursor: pointer;
     transition: transform 0.1s ease;
+
+    display: grid;
+
+    align-items: center;
 }
 
 .spin-button:active {
@@ -237,6 +243,42 @@ input[type="number"]::-webkit-inner-spin-button {
 
     justify-content: start;
     align-items: center;
+}
+
+.talking_button{
+    grid-template-columns: 2fr 0.5fr;
+}
+
+#recording_item{
+    width: 10px;
+    height: 10px;
+
+    border: solid grey 1px;
+    border-radius: 50px;
+    background-color: grey;
+}
+
+.talking_button.listening>#recording_item {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50px;
+
+    background-color: red;
+
+    animation: animateRecordButton 3s infinite;
+}
+
+@keyframes animateRecordButton {
+    0% {
+        background-color: red;
+    }
+    50% {
+        background-color: grey;
+    }
+    100% {
+        background-color: red;
+    }
 }
 
 /* =========================================

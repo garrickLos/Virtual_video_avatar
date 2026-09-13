@@ -2,6 +2,7 @@ import { mic_input } from "./micInput.js";
 import { settings } from "./edit_settings.js";
 
 export function Talking(state) {
+    const talkingButton = document.querySelector(".talking_button");
     const character_head_el = document.getElementById("rotating");
     const min_rotate = -40
     const max_rotate = -min_rotate
@@ -11,6 +12,8 @@ export function Talking(state) {
     character_head_el.style.setProperty("--min-rotate-deg", `${min_rotate}deg`);
     character_head_el.style.setProperty("--max-rotate-deg", `${max_rotate}deg`);
     character_head_el.style.setProperty("--transition_style", `ease-in-out`);
+
+    talkingButton.classList.toggle("listening");
 
     if (state.isTalking) {
         mic_input(character_head_el, huidige_rotatie_css, state);
@@ -43,9 +46,7 @@ export function initCharacterPicture() {
     settings.subscribe(setCharacter);
 
     const extractFileName = (fullPath) => {
-        // 1. Haal de map-paden weg (werkt voor zowel Windows \ als Mac /)
         const fileNameWithExt = fullPath.replace(/^.*[\\\/]/, '');
-        // 2. Verwijder .png of .PNG aan het einde en return het resultaat
         return fileNameWithExt
     };
 
@@ -57,7 +58,6 @@ export function initCharacterPicture() {
     const setupPathInput = (inputElement, settingKey, imageElement) => {
         if (!inputElement) return;
 
-        // --- STAP 1: OPSTARTEN (Lezen) ---
         const opgeslagenWaarde = settings.getValue(settingKey);
         if (opgeslagenWaarde) {
             // Laat de huidige naam zien met .png erbij

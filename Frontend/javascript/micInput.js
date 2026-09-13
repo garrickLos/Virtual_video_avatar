@@ -5,7 +5,7 @@ function reset() {
 
 export function mic_input(char_el, css_var, state, options = {}) {
     let rotate_left = true;
-    const threshold = options.threshold ?? 15; // pas dit aan naar wens
+    const threshold = options.threshold ?? 15;
 
     if (!state.isTalking) {
         reset();
