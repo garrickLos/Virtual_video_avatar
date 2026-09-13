@@ -1,0 +1,82 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.btn-primary:hover,
+.btn:hover {
+    background-color: var(--primary-hover);
+    color: var(--text-light);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    background-color: color-mix(in srgb, var(--secondary-color) 85%, black);
+}
+
+.spin-button {
+    width: 100%;
+
+    min-height: 50px;
+    height: auto;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    background: var(--primary-color);
+
+    grid-area: talk_button;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 0.6rem;
+
+    cursor: pointer;
+    transition: transform 0.1s ease;
+
+    display: grid;
+
+    align-items: center;
+
+    color: var(--text-light);
+    font-family: var(--standard-font-family);
+}
+
+.spin-button:active {
+    transform: scale(0.97);
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .spin-button {
+        min-height: 40px;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+    }
+}

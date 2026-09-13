@@ -1,5 +1,6 @@
 @import url("./character-style.css");
 @import url("./settings-style.css");
+@import url("./stylesheet.root.css");
 
 :root {
     --origin_x: 50%;
@@ -9,7 +10,6 @@
 
     --character_scale: 1;
     --character_picture_scale: auto;
-    --greenscreen_color: #00ff00;
 }
 
 *,
@@ -32,10 +32,15 @@ body {
 }
 
 body {
+    color: var(--text-main);
+    font-family: var(--standard-font-family);
+    line-height: 1.6;
+
+    background-color: var(--bg-light);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
 
     > #character_screen {
         background: var(--greenscreen_color);
@@ -53,6 +58,61 @@ body {
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "settings-wrap character-stage";
     overflow: hidden;
+    background: var(--greenscreen_color);
+}
+
+#settings_screen {
+    min-height: 100%;
+    height: auto;
+    overflow-y: auto;
+    background: var(--bg-light);
+    align-items: flex-start;
+}
+
+#settings_screen > #settings-wrap {
+    width: min(100%, 900px);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+#settings_screen #settings {
+    width: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+}
+
+.page-container {
+    width: min(100%, 800px);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.settings-card {
+    padding: var(--spacing-lg);
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.settings-card h1,
+.settings-card h2 {
+    color: var(--primary-color);
+}
+
+.settings-card p {
+    max-width: 700px;
+}
+
+.settings-card a {
+    color: var(--primary-hover);
+}
+
+.settings-card a:hover {
+    text-decoration: underline;
 }
 
 #debug-stip {
@@ -82,5 +142,9 @@ body {
 
         grid-template-columns: 1fr 0fr 1fr;
         grid-template-areas: "settings-wrap . character-stage";
+    }
+
+    #settings_screen > #settings-wrap {
+        padding: var(--spacing-md);
     }
 }

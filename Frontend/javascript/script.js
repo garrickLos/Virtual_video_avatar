@@ -33,12 +33,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSpeechSettings();
 });
 
-function createBrowserWindow() {
-  window.api.createWindow();
+function createBrowserWindow(page, key) {
+  window.api.createWindow(page, key);
 }
 
-const button = document.getElementById("newWindow");
+const button = document.getElementById("new_settingsWindow");
+const faqButton = document.getElementById("new_FAQWindow");
+
 button?.addEventListener("click", (event) => {
   event.preventDefault();
-  createBrowserWindow();
+  createBrowserWindow("./settings.html", "settings");
+});
+
+faqButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  createBrowserWindow("./faq.html", "faq");
 });

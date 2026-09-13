@@ -1,21 +1,24 @@
 .setting-group {
-    font-size: 0.8rem;
-
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 8px;
+    font-size: 0.95rem;
+    background: #ffffff;
+    border: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
 }
 
 .setting-group-header {
     font-weight: bold;
 
     cursor: pointer;
-    padding: 8px 12px;
-    background: #f0f0f0;
+    padding: var(--spacing-md);
+    background: var(--primary-color);
+    color: var(--text-light);
     user-select: none;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: var(--spacing-sm);
 }
 
 .setting-group-header::before {
@@ -29,7 +32,7 @@
 }
 
 .setting-group-content {
-    padding: 8px 12px;
+    padding: var(--spacing-md);
 }
 
 .setting-group.closed .setting-group-content {

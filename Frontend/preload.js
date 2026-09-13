@@ -34,8 +34,10 @@ contextBridge.exposeInMainWorld('storeAPI', {
     }
 });
 
-contextBridge.exposeInMainWorld('api', {
-  createWindow: () => ipcRenderer.send('create-window')
+contextBridge.exposeInMainWorld("api", {
+  createWindow: (page, key) => {
+    ipcRenderer.send("create-window", page, key);
+  }
 });
 
 console.log('Chromium versie:', process.versions.chrome);

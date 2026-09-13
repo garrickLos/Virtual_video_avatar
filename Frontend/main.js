@@ -5,11 +5,16 @@ let store; // <-- pas later instantiëren
 
 const windows = {
   main: null,
-  settings: null
+  settings: null,
+  faq: null
 };
 
+ipcMain.on("create-window", (event, page, key) => {
+  createWindow(page, key);
+});
+
 function createWindow(htmlFileName, key) {
-  
+
   if (windows[key] && !windows[key].isDestroyed()) {
     windows[key].focus();
     return windows[key];
@@ -20,17 +25,17 @@ function createWindow(htmlFileName, key) {
     height: 600,
     icon: path.join(__dirname, "resources/logo/Virtual_Video_Avatar_logo.ico"),
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, "preload.js")
     }
   });
 
-  win.loadFile(htmlFileName);
+  win.loadFile(path.join(__dirname, htmlFileName));
 
   windows[key] = win;
 
-  win.on('closed', () => {
-    windows[key] = null;
-  })
+  win.on("closed", () => {
+    delete windows[key];
+  });
 
   return win;
 }
@@ -103,8 +108,4 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
-});
-
-ipcMain.on('create-window', () => {
-  createWindow("./settings.html", "settings");
 });
