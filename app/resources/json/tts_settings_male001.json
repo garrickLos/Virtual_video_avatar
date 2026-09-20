@@ -1,0 +1,19 @@
+{
+    "tts": {
+        "voice_id": 2,
+        
+        "rate": 1.1,
+        "volume": 0.2,
+        
+        "pitch": 0.95,
+
+        "threshold_db": -10,
+        "threshold_ratio": 3.5,
+        "cutoff_frequency": 500000,
+
+        "room_size": 0.1,
+        "damp_level": 0.35,
+        "dry_level": 1,
+        "wet_level": 0
+    }
+}
