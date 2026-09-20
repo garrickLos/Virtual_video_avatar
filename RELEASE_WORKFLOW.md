@@ -181,7 +181,6 @@ Decide what kind of change this is:
 Run it from the `Frontend` folder:
 
 ```bash
-cd Frontend
 bash bump.sh minor
 ```
 
