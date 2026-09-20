@@ -54,8 +54,9 @@ app.whenReady().then(() => {
           head_picture: { type: 'string' },
           body_picture: { type: 'string' },
           background_color: { type: 'string' },
+          background_color_shortcuts: { type: "array", items: { type: "object", additionalProperties: { type: "string" } } },
           character_scale_input: { type: 'number' },
-          rotation_marker_active: {type: 'boolean'},
+          rotation_marker_active: { type: 'boolean' },
           rotation_marker_posX: { type: 'number' },
           rotation_marker_posY: { type: 'number' }
         }
@@ -66,10 +67,11 @@ app.whenReady().then(() => {
         head_picture: "./character_art/Characters/Default-head.png",
         body_picture: "./character_art/Characters/Default-body.png",
         background_color: "rgb(0, 255, 0)",
+        background_color_shortcuts: [{ "color": "#00ff00", "color": "#ff0000", "color": "#0000ff" }],
         character_scale_input: 1,
         rotation_marker_active: true,
-        rotation_marker_posX: 0.52,
-		    rotation_marker_posY: 0.54
+        rotation_marker_posX: 0.5,
+        rotation_marker_posY: 0.54
       }
     },
 

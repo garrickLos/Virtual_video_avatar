@@ -192,12 +192,51 @@ input {
     background: #ffffff;
 }
 
+.defaultColor-container {
+    gap: var(--spacing-sm);
+
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+
+    justify-items: flex-start;
+
+    >#defaultColorPicks-div {
+        gap: var(--spacing-sm);
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+    }
+
+    >label {
+        color: var(--text-main);
+        font-weight: 600;
+    }
+}
+
+.defaultColors-input {
+
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+
+    >button {
+        width: 50px;
+        height: 50px;
+
+        border: unset;
+
+        margin: 5px;
+    }
+
+    >button:hover {
+        cursor: pointer;
+    }
+}
+
 .input-container label {
     color: var(--text-main);
     font-weight: 600;
 }
 
-#settings-wrap > #settings {
+#settings-wrap>#settings {
     scrollbar-color: var(--primary-hover) transparent;
     scrollbar-width: none;
 }

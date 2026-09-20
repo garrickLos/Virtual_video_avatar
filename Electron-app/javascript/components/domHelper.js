@@ -11,7 +11,7 @@ export function createEl(tag, attributes = {}, ...children) {
     }
   }
 
-  for (const child of children) {
+  for (const child of children.flat()) {
     if (typeof child === "string") {
       element.appendChild(document.createTextNode(child));
     } else if (child instanceof Node) {

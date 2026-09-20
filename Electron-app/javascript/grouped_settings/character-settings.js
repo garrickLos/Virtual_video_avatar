@@ -32,7 +32,7 @@ export function setCharacterSettings() {
                 input: {
                     type: "text",
                     id: "head-picture-input",
-                    className: "btn  picture-input",
+                    className: "btn text-input  picture-input",
                     placeholder: "past path to file (example: C:/images/green.png)"
                 }
             },
