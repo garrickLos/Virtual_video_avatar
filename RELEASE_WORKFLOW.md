@@ -58,11 +58,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: Frontend
+        working-directory: Electron-app
         run: npm install
 
       - name: Build Electron app
-        working-directory: Frontend
+        working-directory: Electron-app
         run: npx electron-builder --publish always
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -94,7 +94,7 @@ Because this fix is unreliable across machines, we avoid depending on `npm versi
 
 This script bumps the version number, commits, tags, and pushes — all in one step, without relying on npm's buggy git integration.
 
-`Frontend/bump.sh`:
+`Electron-app/bump.sh`:
 
 ```bash
 #!/bin/bash
@@ -178,7 +178,7 @@ Decide what kind of change this is:
 | `bash bump.sh minor` | `1.0.0` → `1.1.0` | New feature, backwards compatible |
 | `bash bump.sh major` | `1.0.0` → `2.0.0` | Breaking change |
 
-Run it from the `Frontend` folder:
+Run it from the `Electron-app` folder:
 
 ```bash
 bash bump.sh minor
