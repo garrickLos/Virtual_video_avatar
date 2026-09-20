@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Virtual character</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div id="character_screen" class="scene">
+        <section id="settings-wrap">
+            <label id="stream-toggle" class="stream-toggle">
+                <input type="checkbox" id="hideSettingsToggle">
+                <span class="stream-toggle-track"></span>
+            </label>
+
+            <div id="settings">
+                <button id="spinButton" class="btn talking_button spin-button" type="button">
+                    Click to talk
+                    <div id="recording_item"></div>
+                </button>
+                <button id="new_settingsWindow" class="btn spin-button floating-settings-btn" type="button" aria-label="Open character settings">
+                    Character settings
+                </button>
+                <button id="new_FAQWindow" class="btn spin-button floating-faq-btn" type="button">
+                    Documentation (FAQ)
+                </button>
+            </div>
+        </section>
+
+        <div class="character-stage">
+            <div id="entire_body">
+                <div id="rotating" class="head-stage character">
+                    <div id="debug-stip"></div>
+                    <img id="character_head" class="character character-head" alt="Karakter">
+                </div>
+
+                <img id="character_body" class="character character-body" alt="Lichaam">
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./javascript/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+@import url("./components/settings-group.css");
+@import url("./components/buttons.css");
+
+/* =========================================
+   STANDAARD (FULL SCREEN) - JOUW ORIGINELE CSS
+   ========================================= */
+#settings-wrap {
+    grid-area: settings-wrap;
+
+    min-height: 0;
+    min-width: 0;
+
+    width: auto;
+
+    height: 100%;
+
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "toggle_button" "talk_button";
+
+    justify-items: center;
+
+    overflow-y: auto;
+    /* vangnet: als er echt te weinig hoogte is, scrollt alleen dit paneeltje - de rest blijft altijd passen */
+}
+
+#settings {
+    width: 75%;
+
+    max-height: 100%;
+
+    font-size: 1.3rem;
+
+    background-color: transparent;
+    border-radius: var(--radius-lg);
+
+    box-sizing: border-box;
+
+    overflow-y: scroll;
+
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, #2f6f4f 60%, transparent) transparent;
+
+    transition: height 2s ease, padding 0.15s ease, margin 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+
+    padding: var(--spacing-md);
+
+    margin: 0 0 2% 2%;
+}
+
+#settings.hidden {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+/* --- Chroma key toggle --- */
+.stream-toggle {
+    grid-area: toggle_button;
+    width: 100px;
+    height: 42px;
+
+    margin: 10% 0 5% 0;
+
+    display: inline-block;
+    justify-self: center;
+    cursor: pointer;
+
+    >input {
+        position: absolute;
+        opacity: 0;
+        width: auto;
+        height: auto;
+        margin: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+}
+
+.stream-toggle-track {
+    width: 100%;
+    height: 100%;
+
+    color: white;
+
+    display: block;
+
+    top: 20px;
+    right: 20px;
+
+    background-color: rgba(50, 48, 49, 0.15);
+    /* Semi-transparant zodat het niet opvalt in streams */
+    padding: 10px;
+    border-radius: var(--radius-md);
+
+    backdrop-filter: blur(4px);
+}
+
+input {
+    border-radius: 5px;
+}
+
+/* --- Containers voor de inputs --- */
+.input-container {
+    width: 100%;
+
+    /* background-color: rgb(215, 215, 215); */
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    box-sizing: border-box;
+
+    padding: 0;
+
+    margin-bottom: 2%;
+}
+
+/* --- Scale Input --- */
+.scale-input {
+    width: 100%;
+    min-height: 50px;
+
+    box-sizing: border-box;
+    padding: 0.8rem 1.2rem;
+    background: #ffffff;
+    border: 2px solid var(--primary-color);
+    outline: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.scale-input:focus {
+    border-color: var(--primary-hover);
+    background: #ffffff;
+}
+
+.text-input {
+    width: 100%;
+    min-height: 50px;
+
+    box-sizing: border-box;
+    padding: 0.8rem 1.2rem;
+    /* Iets kleiner voor lange paden */
+    border: 2px solid var(--primary-color);
+    outline: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.text-input:focus {
+    border-color: var(--primary-hover);
+    background: #ffffff;
+}
+
+/* --- Color Input --- */
+.color-input {
+    width: 100%;
+    min-height: 50px;
+
+    box-sizing: border-box;
+    padding: 0.5rem;
+    background: #ffffff;
+    border: 2px solid var(--primary-color);
+
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-input::-webkit-color-swatch {
+    border: none;
+    border-radius: 0.4rem;
+}
+
+.color-input::-moz-color-swatch {
+    border: none;
+    border-radius: 0.4rem;
+}
+
+.color-input:focus {
+    border-color: var(--primary-hover);
+    background: #ffffff;
+}
+
+.defaultColor-container {
+    gap: var(--spacing-sm);
+
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+
+    justify-items: flex-start;
+
+    >#defaultColorPicks-div {
+        gap: var(--spacing-sm);
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+    }
+
+    >label {
+        color: var(--text-main);
+        font-weight: 600;
+    }
+}
+
+.defaultColors-input {
+
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+
+    >button {
+        width: 50px;
+        height: 50px;
+
+        border: unset;
+
+        margin: 5px;
+    }
+
+    >button:hover {
+        cursor: pointer;
+    }
+}
+
+.input-container label {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+#settings-wrap>#settings {
+    scrollbar-color: var(--primary-hover) transparent;
+    scrollbar-width: none;
+}
+
+/* --- Rotation Marker Wrapper --- */
+#rotationMarker_wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#hideRotationMarker {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.picture-input {
+    font-size: 0.7rem;
+}
+
+.rotation-container label {
+    margin-top: 2%;
+
+    display: flex;
+
+    justify-content: start;
+    align-items: center;
+}
+
+.talking_button {
+    display: flex;
+
+    grid-template-columns: 2fr 0.5fr;
+
+    gap: var(--spacing-lg);
+}
+
+#recording_item {
+    width: 10px;
+    height: 10px;
+
+    border: solid grey 1px;
+    border-radius: 50px;
+    background-color: grey;
+}
+
+.talking_button.listening>#recording_item {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50px;
+
+    background-color: red;
+
+    animation: animateRecordButton 3s infinite;
+}
+
+@keyframes animateRecordButton {
+    0% {
+        background-color: red;
+        border: solid red 6px;
+    }
+
+    50% {
+        background-color: grey;
+        border: solid grey 0px;
+    }
+
+    100% {
+        background-color: red;
+        border: solid red 6px;
+    }
+}
+
+/* =========================================
+   HALF SCHERM / KLEINERE SCHERMEN (< 1000px)
+   ========================================= */
+@media (max-width: 1000px) {
+    #settings-wrap {
+        width: 75%;
+        gap: 5%;
+        /* Minder extreme witruimte */
+    }
+
+    #settings {
+        border-radius: 25px;
+        /* Minder ronde hoeken op smal scherm */
+    }
+
+    .stream-toggle {
+        width: 60px;
+        height: 28px;
+        margin-top: 10%;
+    }
+
+    .stream-toggle-track {
+        border-width: 3px;
+    }
+
+    .input-container {
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .scale-input,
+    .color-input {
+        min-height: 40px;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .scale-input,
+    .color-input,
+    .text-input {
+        min-height: 40px;
+        padding: 0.5rem 1rem;
+    }
+
+    #hideRotationMarker {
+        width: 20px;
+        height: 20px;
+    }
+}

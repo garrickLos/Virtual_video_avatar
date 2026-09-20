@@ -1,0 +1,63 @@
+{
+  "name": "Virtual-character",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --publish always"
+  },
+  "devDependencies": {
+    "electron": "^42.1.0",
+    "electron-builder": "^26.15.3"
+  },
+  "description": "",
+  "dependencies": {
+    "buffer-crc32": "^0.2.13",
+    "debug": "^4.4.3",
+    "electron-store": "^6.0.1",
+    "end-of-stream": "^1.4.5",
+    "env-paths": "^3.0.0",
+    "extract-zip": "^2.0.1",
+    "fd-slicer": "^1.1.0",
+    "get-stream": "^5.2.0",
+    "graceful-fs": "^4.2.11",
+    "ms": "^2.1.3",
+    "once": "^1.4.0",
+    "pend": "^1.2.0",
+    "progress": "^2.0.3",
+    "pump": "^3.0.4",
+    "semver": "^7.8.0",
+    "sumchecker": "^3.0.1",
+    "undici": "^7.25.0",
+    "undici-types": "^7.16.0",
+    "wrappy": "^1.0.2",
+    "yauzl": "^2.10.0"
+  },
+  "build": {
+    "appId": "com.jouwnaam.virtueelcharacter",
+    "productName": "Virtual video character",
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,readme.md,readme}",
+      "!**/*.map"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "garrickLos",
+      "repo": "Virtual_video_avatar"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
