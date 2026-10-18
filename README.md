@@ -17,11 +17,16 @@ For the character to work properly, you need a head/mouth area and a body. The h
 
 ## Testing the program
 
-Open "Command Prompt" and type: `cd {the location of the folder}` — put the location of the folder where you placed it after the `cd` (my location is `D:\Github\virtual_camera_character\Frontend`, so I type `cd D:\Github\virtual_camera_character\Frontend`).
+Open a terminal in the `Electron-app` folder. You need Node.js (which includes npm); Electron itself does not need to be installed globally. Run these commands the first time, or whenever you need to restore the project's dependencies:
 
-If after that you still see the old location where you started (usually something like `C:\Users\{user}`), you need to switch drives first. For me it's the D drive, so I type `D:` and then it will take you to the correct location.
+```sh
+npm ci
+npm start
+```
 
-Once you're in the Frontend folder, type: `npm start`. This starts the application. This comes with a default character that I use myself, along with a few settings:
+`npm ci` installs the exact dependencies listed in `Electron-app/package-lock.json`, including Electron and `electron-store`. On later starts, run `npm start` from the same folder. This comes with a default character that I use myself, along with a few settings:
+
+In PowerShell, if script execution policy blocks `npm`, use `npm.cmd ci` and `npm.cmd start` instead.
 
 - **Button at the very top of the settings**: Hides all the settings for OBS
 - **"Click to talk"**: Picks up audio from your mic
