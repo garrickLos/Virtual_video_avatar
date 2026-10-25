@@ -82,3 +82,35 @@ input[type="number"]::-webkit-inner-spin-button {
         padding: 0.5rem 1rem;
     }
 }
+
+.window-control-button {
+    min-width: 35px;
+    width: 35px;
+
+    min-height: 35px;
+    height: 35px;
+    
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: transparent;
+    /* color: rgb(0, 0, 0); */
+    display: inline-flex;
+    font: inherit;
+}
+
+.window-control-button.minimize {
+    color: purple;
+}
+
+.window-control-button.maximize {
+    color: green;
+}
+
+.window-control-button.close {
+    color: green;
+}
+
+.window-control-button:hover {
+    background: rgba(31, 31, 31, 0.2);
+    color: color-mix(in srgb, rgb(5, 5, 5) 70%, rgb(212, 212, 212) 25%);
+}

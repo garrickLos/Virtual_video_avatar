@@ -10,12 +10,18 @@
 
     --character_scale: 1;
     --character_picture_scale: auto;
+
+    --window_controls_height: 40px;
 }
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+.container {
+    padding-top: var(--window_controls_height);
 }
 
 /* =========================================

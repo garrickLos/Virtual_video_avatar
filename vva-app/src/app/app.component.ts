@@ -1,11 +1,11 @@
-import { NgTemplateOutlet } from "@angular/common";
 import { Component, signal } from "@angular/core";
 import { invoke } from "@tauri-apps/api/core";
 import { ButtonComponent } from "./components/button.component";
+import { WindowControlsComponent } from "./components/window-controls.component";
 
 @Component({
   selector: "app-root",
-  imports: [NgTemplateOutlet, ButtonComponent],
+  imports: [ButtonComponent, WindowControlsComponent],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.css",
 })

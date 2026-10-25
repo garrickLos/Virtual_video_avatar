@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Tauri: Starten",
+      "type": "shell",
+      "command": "npm.cmd",
+      "args": ["run", "tauri", "--", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}\\vva-app",
+        "env": {
+          "PATH": "${env:PATH};${env:USERPROFILE}\\.cargo\\bin"
+        }
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

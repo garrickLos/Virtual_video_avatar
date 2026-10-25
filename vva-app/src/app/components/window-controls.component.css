@@ -1,0 +1,51 @@
+:host {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--window_controls_height);
+    z-index: 10;
+}
+
+.custom-titlebar {
+    height: var(--window_controls_height);
+    /* Achtergrond instellen (kies één van de opties): */
+    background: linear-gradient(90deg, #ffffff, #ffffff);
+    /* Optie
+1: Kleurverloop */
+    /* background-image: url('assets/jouw-header-foto.jpg'); */
+    /*
+Optie 2: Foto */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    color: rgb(0, 0, 0);
+    /* Belangrijk voor UX: Voorkomt tekstselectie bij het slepen */
+    user-select: none;
+}
+
+.logo {
+    height: 20px;
+    /* Zorgt dat je niet de afbeelding wegsleept in plaats van het
+venster */
+    pointer-events: none;
+}
+
+.window-dressup {
+    width: 25%;
+    
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap:2%;
+
+    font-size: 0.9rem;
+}
+
+.window-dressup img {
+    width: 100%;
+    max-width: 25px;
+    height: 100%;
+    max-height: 25px;
+}

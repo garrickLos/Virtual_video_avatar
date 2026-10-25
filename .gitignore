@@ -30,6 +30,8 @@ Thumbs.db
 
 # Code editor mappen (VS Code, IntelliJ, etc.)
 .vscode/
+!.vscode/
+!.vscode/tasks.json
 .idea/
 *.suo
 *.ntvs*

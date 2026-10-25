@@ -1,6 +1,7 @@
 <main class="container">
-  <!-- <body> tag weggehaald, want dat is ongeldige HTML binnen een component -->
-  <div id="character_screen" class="scene">
+  <app-window-controls></app-window-controls>
+
+  <body id="character_screen" class="scene">
     <section id="settings-wrap">
       <label id="stream-toggle" class="stream-toggle">
         <input type="checkbox" id="hideSettingsToggle">
@@ -23,14 +24,14 @@
       </div>
     </section>
 
-    <div class="character-stage">
+    <section class="character-stage">
       <div id="entire_body">
         <div id="rotating" class="head-stage character">
           <div id="debug-stip"></div>
-          <img id="character_head" class="character character-head" alt="Character head">
+          <img id="character_head" class="character character-head" alt="Character head" src="../assets/Default_character/Default-head.png">
         </div>
-        <img id="character_body" class="character character-body" alt="CHaracter body">
+        <img id="character_body" class="character character-body" alt="Character body" src="../assets/Default_character/Default-body.png">
       </div>
-    </div>
-  </div>
+    </section>
+  </body>
 </main>
