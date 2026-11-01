@@ -1,0 +1,27 @@
+:root {
+    --bg-light: #ecebe4;
+    --text-main: #323031;
+    --primary-color: #084c61;
+    --primary-hover: #429ea6;
+    --secondary-color: #cc998d;
+
+    --chroma-green: #00ff00;
+    --chroma-magenta: #ff00ff;
+    --text-light: #ffffff;
+    --shadow: 0 4px 6px rgba(50, 48, 49, 0.1);
+    --greenscreen_color: var(--chroma-green);
+
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+
+    --standard-font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    --origin_x: 50%;
+    --origin_y: 15%;
+    --character_scale: 1;
+    --character_picture_scale: auto;
+    --window_controls_height: 25px;
+}

@@ -35,7 +35,7 @@
                 "output": "css"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": ["src/app/styles.css"]
           },
           "configurations": {
             "production": {

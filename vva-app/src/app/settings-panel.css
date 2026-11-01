@@ -317,6 +317,7 @@ input {
         width: 75%;
         gap: 5%;
         /* Minder extreme witruimte */
+        margin-top: 10%;
     }
 
     #settings {
@@ -341,9 +342,7 @@ input {
 
     .scale-input,
     .color-input {
-        min-height: 40px;
         font-size: 1.1rem;
-        padding: 0.5rem 1rem;
     }
 
     .scale-input,

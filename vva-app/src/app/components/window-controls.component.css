@@ -24,6 +24,8 @@ Optie 2: Foto */
     color: rgb(0, 0, 0);
     /* Belangrijk voor UX: Voorkomt tekstselectie bij het slepen */
     user-select: none;
+
+    overflow-y: hidden;
 }
 
 .logo {
@@ -45,7 +47,7 @@ venster */
 
 .window-dressup img {
     width: 100%;
-    max-width: 25px;
+    max-width: calc(var(--window_controls_height) - 5px);
     height: 100%;
-    max-height: 25px;
+    max-height: calc(var(--window_controls_height) - 5px);
 }

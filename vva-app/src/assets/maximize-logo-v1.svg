@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 270 270">
+  <defs>
+    <style>
+      .cls-1{fill:#ffffff;stroke:#000000;stroke-width:10;stroke-miterlimit:10}
+      .cls-2{fill:#ffffff;stroke:#000000;stroke-width:5;stroke-miterlimit:10}
+      .cls-3{fill:#ffffff;stroke:#000000;stroke-miterlimit:10}
+      .cls-4{fill:none;stroke:#000000;stroke-miterlimit:10}
+    </style>
+  </defs>
+  <title>Artboard 1</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M59.112 54.721 L221.697 54.721 C225.801 54.721 229.128 58.048 229.128 62.152 L229.128 179.925 C229.128 184.029 225.801 187.356 221.697 187.356 L59.112 187.356 C55.008 187.356 51.681 184.029 51.681 179.925 L51.681 62.152 C51.681 58.048 55.008 54.721 59.112 54.721 Z" class="cls-1"/>
+    <path d="M36.593 92.102 L199.178 92.102 C203.283 92.102 206.61 95.429 206.61 99.533 L206.61 217.306 C206.61 221.41 203.283 224.737 199.178 224.737 L36.593 224.737 C32.489 224.737 29.162 221.41 29.162 217.306 L29.162 99.533 C29.162 95.429 32.489 92.102 36.593 92.102 Z" class="cls-1"/>
+    <line x1="51.681" y1="79.714" x2="229.128" y2="79.714" class="cls-2"/>
+    <rect x="184.703" y="64.625" width="10.594" height="8.75" class="cls-3"/>
+    <line x1="165.119" y1="69" x2="174.881" y2="69" class="cls-4"/>
+    <g>
+      <line x1="206.101" y1="63.101" x2="217.899" y2="74.899" class="cls-4"/>
+      <line x1="206.101" y1="74.899" x2="217.899" y2="63.101" class="cls-4"/>
+    </g>
+  </g>
+</svg>

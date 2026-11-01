@@ -16,10 +16,6 @@
     transform: scale(0.98);
 }
 
-.btn:active {
-  transform: scale(0.98);
-}
-
 .btn-primary {
     background-color: var(--primary-color);
     color: var(--text-light);
@@ -53,18 +49,20 @@
 
     grid-area: talk_button;
     padding: 0.8rem 1.2rem;
-    border: none;
+    border: var(--button-border, none);
     border-radius: 0.6rem;
 
     cursor: pointer;
     transition: transform 0.1s ease;
 
-    display: grid;
+    display: var(--button-display, grid);
 
     align-items: center;
 
     color: var(--text-light);
     font-family: var(--standard-font-family);
+
+    gap: var(--button-gap, 0);
 }
 
 .spin-button:active {
@@ -96,18 +94,6 @@ input[type="number"]::-webkit-inner-spin-button {
     /* color: rgb(0, 0, 0); */
     display: inline-flex;
     font: inherit;
-}
-
-.window-control-button.minimize {
-    color: purple;
-}
-
-.window-control-button.maximize {
-    color: green;
-}
-
-.window-control-button.close {
-    color: green;
 }
 
 .window-control-button:hover {

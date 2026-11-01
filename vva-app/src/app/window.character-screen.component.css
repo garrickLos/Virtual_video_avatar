@@ -1,0 +1,10 @@
+@import url("./app-layout.css");
+@import url("./character-stage.css");
+@import url("./settings-panel.css");
+@import url("./design-tokens.css");
+
+#character_screen app-button.character-talk-button {
+  --button-display: flex;
+
+  --button-gap: 10%;
+}

@@ -6,8 +6,8 @@ import { WindowControlsComponent } from "./components/window-controls.component"
 @Component({
   selector: "app-root",
   imports: [ButtonComponent, WindowControlsComponent],
-  templateUrl: "./app.component.html",
-  styleUrl: "./app.component.css",
+  templateUrl: "./window.characterScreen.component.html",
+  styleUrl: "./window.character-screen.component.css",
 })
 export class AppComponent {
   greetingMessage = signal("");

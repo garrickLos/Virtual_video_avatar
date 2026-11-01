@@ -105,8 +105,24 @@
         height: calc(var(--character_picture_scale) / var(--char_scale_mode));
         width: calc(var(--character_picture_scale) / var(--char_scale_mode));
     }
-    /* .character-head hoeft hier niet meer aangepast te worden:
-       die volgt automatisch (100%/100%) de nieuwe grootte van
-       #entire_body, die op zijn beurt de grootte van .character-body
-       volgt. */
+}
+
+#debug-stip {
+    --visibility: hidden;
+
+    position: absolute;
+    left: var(--origin_x);
+    top: var(--origin_y);
+
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border: 5px solid white;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    pointer-events: none;
+
+    visibility: var(--visibility);
 }
