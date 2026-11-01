@@ -1,0 +1,10 @@
+<button
+  id="spinButton"
+  class="talking_button"
+  type="button"
+  [class.listening]="isTalking"
+  (click)="startTalking()"
+>
+    Click to talk
+    <div id="recording_item"></div>
+</button>

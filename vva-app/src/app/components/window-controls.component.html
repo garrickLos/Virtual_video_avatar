@@ -1,20 +1,20 @@
 <header class="custom-titlebar" data-tauri-drag-region (mousedown)="startDragging($event)">
     <div class="window-dressup">
-        <!-- <img src="assets/logo-v1.svg" alt="Logo" class="logo" /> -->
+        <img src="assets/logo-v1.svg" alt="Logo" class="logo" />
         <span class="title-text">Mijn App</span>
     </div>
     <div class="window-controls">
         <app-button buttonId="minimize-button" ariaLabel="Minimaliseren"
             [classes]="['window-control-button', 'minimize']" (click)="minimize()" onkeypress="">
-            <img src="../../assets/minimize-logo-v1.svg">
+            <img src="../../assets/minimize-logo-v1.svg" alt="minimize button for the app">
         </app-button>
         <app-button buttonId="maximize-button" ariaLabel="Maximaliseren"
             [classes]="['window-control-button', 'maximize']" (click)="maximize()" onkeypress="">
-            <img src="../../assets/maximize-logo-v1.svg">
+            <img src="../../assets/maximize-logo-v1.svg" alt="maximize button for the app">
         </app-button>
         <app-button buttonId="close-button" ariaLabel="Sluiten" [classes]="['window-control-button', 'close']"
             (click)="close()" onkeypress="">
-            <img src="../../assets/close-logo-v1.svg">
+            <img src="../../assets/close-logo-v1.svg" alt="closing button for the app">
         </app-button>
     </div>
 </header>

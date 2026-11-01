@@ -267,51 +267,6 @@ input {
     align-items: center;
 }
 
-.talking_button {
-    display: flex;
-
-    grid-template-columns: 2fr 0.5fr;
-
-    gap: var(--spacing-lg);
-}
-
-#recording_item {
-    width: 10px;
-    height: 10px;
-
-    border: solid grey 1px;
-    border-radius: 50px;
-    background-color: grey;
-}
-
-.talking_button.listening>#recording_item {
-    width: 10px;
-    height: 10px;
-
-    border-radius: 50px;
-
-    background-color: red;
-
-    animation: animateRecordButton 3s infinite;
-}
-
-@keyframes animateRecordButton {
-    0% {
-        background-color: red;
-        border: solid red 6px;
-    }
-
-    50% {
-        background-color: grey;
-        border: solid grey 0px;
-    }
-
-    100% {
-        background-color: red;
-        border: solid red 6px;
-    }
-}
-
 /* =========================================
    HALF SCHERM / KLEINERE SCHERMEN (< 1000px)
    ========================================= */

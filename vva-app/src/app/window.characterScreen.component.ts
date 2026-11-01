@@ -2,10 +2,11 @@ import { Component, signal } from "@angular/core";
 import { invoke } from "@tauri-apps/api/core";
 import { ButtonComponent } from "./components/button.component";
 import { WindowControlsComponent } from "./components/window-controls.component";
+import { talkingButtonComponent } from "./components/talking-button/talking-button.component";
 
 @Component({
   selector: "app-root",
-  imports: [ButtonComponent, WindowControlsComponent],
+  imports: [ButtonComponent, WindowControlsComponent, talkingButtonComponent],
   templateUrl: "./window.characterScreen.component.html",
   styleUrl: "./window.character-screen.component.css",
 })

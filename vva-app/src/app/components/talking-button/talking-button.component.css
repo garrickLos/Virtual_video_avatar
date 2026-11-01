@@ -1,0 +1,70 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.talking_button {
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+    padding: 0.8rem 1.2rem;
+    border: var(--button-border, none);
+    border-radius: 0.6rem;
+    background: var(--primary-color);
+    color: var(--text-light);
+    font-family: var(--standard-font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    grid-area: talk_button;
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    transition: transform 0.1s ease;
+}
+
+.talking_button:active {
+    transform: scale(0.97);
+}
+
+#recording_item {
+    width: 10px;
+    height: 10px;
+
+    border: solid grey 1px;
+    border-radius: 50px;
+    background-color: grey;
+}
+
+.talking_button.listening > #recording_item {
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    background-color: red;
+    animation: animateRecordButton 3s infinite;
+}
+
+@keyframes animateRecordButton {
+    0% {
+        background-color: red;
+        border: solid red 6px;
+    }
+
+    50% {
+        background-color: grey;
+        border: solid grey 0;
+    }
+
+    100% {
+        background-color: red;
+        border: solid red 6px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .talking_button {
+        min-height: 40px;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+    }
+}
