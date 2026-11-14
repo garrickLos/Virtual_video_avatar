@@ -4,15 +4,15 @@
   <body id="character_screen" class="scene">
     <section id="settings-wrap">
       <label id="stream-toggle" class="stream-toggle">
-        <input type="checkbox" id="hideSettingsToggle">
+        <input type="checkbox" id="hideSettingsToggle" (change)="toggleSettingsVisibility($event)">
         <span class="stream-toggle-track"></span>
       </label>
 
-      <div id="settings">
+      <div id="settings" [class.hidden]="settingsHidden">
         <talkingButton></talkingButton>
 
         <app-button buttonId="Character settings" [classes]="['floating-faq-btn']">
-          Documentation (FAQ)
+          Character settings
         </app-button>
 
         <app-button buttonId="new_FAQWindow" [classes]="['floating-faq-btn']">

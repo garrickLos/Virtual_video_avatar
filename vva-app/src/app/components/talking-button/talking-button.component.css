@@ -1,25 +1,12 @@
-:host {
-    display: block;
-    width: 100%;
-}
-
 .talking_button {
-    width: 100%;
-    min-height: 50px;
-    height: auto;
-    padding: 0.8rem 1.2rem;
-    border: var(--button-border, none);
-    border-radius: 0.6rem;
-    background: var(--primary-color);
-    color: var(--text-light);
-    font-family: var(--standard-font-family);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
+    --button-display: inline-flex;
+    --button-gap: 1rem;
+
     grid-area: talk_button;
+
     display: flex;
-    align-items: center;
-    gap: 10%;
+    flex-direction: column;
+
     transition: transform 0.1s ease;
 }
 
@@ -36,7 +23,7 @@
     background-color: grey;
 }
 
-.talking_button.listening > #recording_item {
+.talking_button.listening #recording_item {
     width: 10px;
     height: 10px;
     border-radius: 50px;
@@ -58,13 +45,5 @@
     100% {
         background-color: red;
         border: solid red 6px;
-    }
-}
-
-@media (max-width: 1000px) {
-    .talking_button {
-        min-height: 40px;
-        font-size: 1.1rem;
-        padding: 0.5rem 1rem;
     }
 }

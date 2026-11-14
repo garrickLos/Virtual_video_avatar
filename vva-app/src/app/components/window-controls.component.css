@@ -37,17 +37,21 @@ venster */
 
 .window-dressup {
     width: 25%;
-    
+
     display: grid;
     grid-template-columns: 50px 1fr;
-    gap:2%;
+    gap: 2%;
 
     font-size: 0.9rem;
-}
 
-.window-dressup img {
-    width: 100%;
-    max-width: calc(var(--window_controls_height) - 5px);
-    height: 100%;
-    max-height: calc(var(--window_controls_height) - 5px);
+    >.styling {
+        display: flex;
+        content: center;
+        align-items: center;
+
+        >img {
+            min-width: calc(var(--window_controls_height) - 10px);
+            min-height: calc(var(--window_controls_height) - 10px);
+        }
+    }
 }

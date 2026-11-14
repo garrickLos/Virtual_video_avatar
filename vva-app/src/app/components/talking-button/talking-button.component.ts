@@ -1,17 +1,20 @@
 import { Component } from "@angular/core";
-import { Talking } from "./setting.talkingButtonAction";
+import { Talking } from "./setting.talkin-Button.Action";
+import { ButtonComponent } from "../button.component"; 
+
+import { TalkingButtonState } from "./talking-button.interfaces";
 
 @Component({
   selector: "talkingButton",
+  imports: [ButtonComponent],
   templateUrl: "./talking-button.component.html",
-  styleUrl: "./talking-button.component.css",
+  styleUrls: ["../button.component.css", "./talking-button.component.css"],
 })
 export class talkingButtonComponent {
-  isTalking = false;
-
+  state: TalkingButtonState = { isTalking: false };
   startTalking(): void {
-    this.isTalking = !this.isTalking;
-    console.log(this.isTalking ? "Talking" : "Shutting up!");
-    Talking(this.isTalking);
+    this.state.isTalking = !this.state.isTalking;
+    console.log(this.state.isTalking ? "Talking" : "Shutting up!");
+    Talking(this.state);
   }
 }
