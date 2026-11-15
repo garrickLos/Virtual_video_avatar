@@ -5,15 +5,15 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
-        os: [
-          windows-latest, 
-          macos-latest, 
-          ubuntu-latest
-          ]
+        os: [windows-latest, macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -21,14 +21,38 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            curl \
+            file \
+            libayatana-appindicator3-dev \
+            libssl-dev \
+            libwebkit2gtk-4.1-dev \
+            librsvg2-dev \
+            libxdo-dev \
+            patchelf \
+            wget
 
       - name: Install dependencies
-        working-directory: Frontend
-        run: npm install
+        working-directory: nexus-avatar
+        run: npm ci
 
-      - name: Build Electron app
-        working-directory: Frontend
-        run: npx electron-builder --publish always
+      - name: Build and release Tauri app
+        uses: tauri-apps/tauri-action@v1
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: nexus-avatar
+          tagName: ${{ github.ref_name }}
+          releaseName: nexus-avatar ${{ github.ref_name }}
+          releaseBody: Download the installer for your platform from the release assets.
+          releaseDraft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}
