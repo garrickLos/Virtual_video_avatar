@@ -11,7 +11,7 @@
       <div id="settings" [class.hidden]="settingsHidden">
         <talkingButton></talkingButton>
 
-        <app-button buttonId="Character settings" [classes]="['floating-faq-btn']">
+        <app-button buttonId="Character settings" (click)="openSettingsWindow($event)" [classes]="['floating-faq-btn']">
           Character settings
         </app-button>
 
