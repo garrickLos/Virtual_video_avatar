@@ -56,3 +56,4 @@ jobs:
           releaseBody: Download the installer for your platform from the release assets.
           releaseDraft: false
           prerelease: ${{ contains(github.ref_name, '-') }}
+          args: ${{ runner.os == 'Windows' && contains(github.ref_name, '-') && '--bundles nsis' || '' }}
