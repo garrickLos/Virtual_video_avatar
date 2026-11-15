@@ -33,6 +33,8 @@ Optie 2: Foto */
     /* Zorgt dat je niet de afbeelding wegsleept in plaats van het
 venster */
     pointer-events: none;
+
+    border-radius: 5px;
 }
 
 .window-dressup {
