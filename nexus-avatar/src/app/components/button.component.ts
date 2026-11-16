@@ -6,18 +6,7 @@ import { NgClass } from '@angular/common';
   standalone: true,
   imports: [NgClass],
   // Je kunt hier ook templateUrl: './button.component.html' gebruiken
-  template: `
-    <button
-      [id]="buttonId"
-      [attr.aria-label]="ariaLabel || null"
-      class="btn spin-button"
-      [ngClass]="classes"
-      [type]="buttonType"
-    >
-      <!-- ng-content zorgt ervoor dat alles wat je tussen de tags zet hier belandt -->
-      <ng-content></ng-content>
-    </button>
-  `,
+  templateUrl: './button.component.html', 
   styleUrl: './button.component.css'
 })
 export class ButtonComponent {
