@@ -3,43 +3,20 @@
 @import url("./settings-panel.css");
 @import url("./design-tokens.css");
 
-.setting-group {
-    font-size: 0.95rem;
-    background: #ffffff;
-    border: 0;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow);
-    margin-bottom: var(--spacing-md);
-    overflow: hidden;
+body {
+    display: block;
 }
 
-.setting-group-header {
-    font-weight: bold;
+#settings_screen {
+    width: 90%;
 
-    cursor: pointer;
-    padding: var(--spacing-md);
-    background: var(--primary-color);
-    color: var(--text-light);
-    user-select: none;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+    background-color: aqua;
+
+    justify-self: center;
+    flex-direction: column;
+    padding: 10px;
 }
 
-.setting-group-header::before {
-    content: "▾";
-    display: inline-block;
-    transition: transform 0.15s ease;
-}
-
-.setting-group.closed .setting-group-header::before {
-    transform: rotate(-90deg);
-}
-
-.setting-group-content {
-    padding: var(--spacing-md);
-}
-
-.setting-group.closed .setting-group-content {
-    display: none;
+#settings_screen .setting-group {
+    height: 0px;
 }
