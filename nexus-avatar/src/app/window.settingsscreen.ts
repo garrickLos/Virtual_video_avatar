@@ -1,10 +1,10 @@
 import { Component } from "@angular/core";
-import { WindowControlsComponent } from "./components/window-controls.component";
+import { FoldButtonComponent } from "./components/foldButton.component";
 
 @Component({
   selector: "app-settings-screen",
-  imports: [WindowControlsComponent],
+  imports: [FoldButtonComponent],
   templateUrl: "./window.settingsscreen.html",
-  styleUrls: ["./window.characterscreen.css" , "./window.settingsscreen.css"],
+  styleUrls: ["./window.characterscreen.css" , "./window.settingsscreen.css"]
 })
 export class SettingsScreenComponent {}

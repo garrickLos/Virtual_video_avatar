@@ -1,12 +1,11 @@
 import { Component, signal } from "@angular/core";
 import { ButtonComponent } from "./components/button.component";
-import { WindowControlsComponent } from "./components/window-controls.component";
 import { talkingButtonComponent } from "./components/talking-button/talking-button.component";
 import { openSpecificWindow } from "./window.characterScreen.components";
 
 @Component({
   selector: "app-character-screen",
-  imports: [ButtonComponent, WindowControlsComponent, talkingButtonComponent],
+  imports: [ButtonComponent, talkingButtonComponent],
   templateUrl: "./window.characterscreen.html",
   styleUrl: "./window.characterscreen.css",
 })
