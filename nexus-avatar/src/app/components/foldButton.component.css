@@ -31,10 +31,11 @@
     transform: rotate(-90deg);
 }
 
-.setting-group-content {
-    padding: var(--spacing-md);
-}
-
 .setting-group.closed .setting-group-content {
     display: none;
+}
+
+.setting-group-content {
+    display: flex;
+    flex-direction: row;
 }

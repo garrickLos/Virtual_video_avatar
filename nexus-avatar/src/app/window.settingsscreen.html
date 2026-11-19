@@ -1,8 +1,13 @@
 <main class="container">
     <body id="settings_screen">
-        <foldButtonComponent>setting button folded</foldButtonComponent>
-        <foldButtonComponent>1</foldButtonComponent>
-        <foldButtonComponent>2</foldButtonComponent>
-        <foldButtonComponent>3</foldButtonComponent>
+        <foldButtonComponent>
+            <span slot="button-header">setting button folded</span>
+            
+                <label slot="button-content" for="greenscreen-color-input" id="greenscreen-color-titel">
+                    Greenscreen color
+                </label>
+                <input slot="button-content" type="color" id="greenscreen-color-input" class="color-input">
+            
+        </foldButtonComponent>
     </body>
 </main>

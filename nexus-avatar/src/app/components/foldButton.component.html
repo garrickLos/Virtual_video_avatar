@@ -1,9 +1,17 @@
 <div
     [id]="buttonId"
-    class="setting-group closed"
+    class="setting-group open"
     >
     <div class="setting-group-header">
-        <ng-content></ng-content>
+        <ng-content 
+            select="[slot='button-header']"
+        >
+        </ng-content>
     </div>
-    <div class="setting-group-content"></div>
+    <div class="setting-group-content">
+        <ng-content 
+            select="[slot='button-content']"
+        >
+        </ng-content>
+    </div>
 </div>

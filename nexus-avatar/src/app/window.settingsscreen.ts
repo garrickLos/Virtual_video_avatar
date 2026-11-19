@@ -5,6 +5,6 @@ import { FoldButtonComponent } from "./components/foldButton.component";
   selector: "app-settings-screen",
   imports: [FoldButtonComponent],
   templateUrl: "./window.settingsscreen.html",
-  styleUrls: ["./window.characterscreen.css" , "./window.settingsscreen.css"]
+  styleUrls: ["./window.characterscreen.css" , "./window.settingsscreen.css"],
 })
 export class SettingsScreenComponent {}
